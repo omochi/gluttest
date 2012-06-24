@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <vector>
 #include <src/util.h>
 #include <src/Rect.h>
@@ -46,12 +46,12 @@ namespace engine{
 		void initialize();
 		void finalize();
 
-		//Actor‚Í’†‚Ådelete‚³‚ê‚¤‚é
+		//Actorã¯ä¸­ã§deleteã•ã‚Œã†ã‚‹
 		void update(float sec);
 		void addHandle(ActorHandle *h);
 		void removeHandle(ActorHandle *h);
 
-		//Š—LŒ ‚ğ“n‚·
+		//æ‰€æœ‰æ¨©ã‚’æ¸¡ã™
 		void addActor(Actor *a);
 
 		virtual void render();

@@ -1,4 +1,4 @@
-#include "Sphere.h"
+﻿#include "Sphere.h"
 
 namespace omgl{
 	Sphere::Sphere():GLTriangles(){

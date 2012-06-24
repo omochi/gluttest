@@ -1,4 +1,4 @@
-#include "Transform.h"
+ï»¿#include "Transform.h"
 namespace omgl{
 	const vec3 &Transform::getPos() const{
 		return m_Pos;
@@ -66,7 +66,7 @@ namespace omgl{
 		return m;
 	}
 	void Transform::setTransform(const mat &m){
-		//‚ ‚Á‚Ä‚é‚Ì‚©‚µ‚çH
+		//ã‚ã£ã¦ã‚‹ã®ã‹ã—ã‚‰ï¼Ÿ
 		Transform t;
 		t.m_Pos = vec3(glm::column(m,3));
 		t.m_Rot = glm::quat_cast(m);

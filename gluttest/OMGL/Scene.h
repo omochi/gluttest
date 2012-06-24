@@ -1,15 +1,15 @@
-#pragma once
+ï»¿#pragma once
 
 #include "SceneNode.h"
 #include "Camera.h"
 
-//ƒcƒŠ[‰»‚Ì‚½‚ß‚ÉNode‚ğŒp³B
-//ƒV[ƒ“©‘Ì‚Ì•ÏŠ·‚Í–³‹‚·‚é
+//ãƒ„ãƒªãƒ¼åŒ–ã®ãŸã‚ã«Nodeã‚’ç¶™æ‰¿ã€‚
+//ã‚·ãƒ¼ãƒ³è‡ªä½“ã®å¤‰æ›ã¯ç„¡è¦–ã™ã‚‹
 
 namespace omgl{
 	class Scene : public SceneNode{
 	private:
-		//ˆêŒÂ
+		//ä¸€å€‹
 		Camera *m_MainCamera;
 	public:
 		Camera *getMainCamera() const;

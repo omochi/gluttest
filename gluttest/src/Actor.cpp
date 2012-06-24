@@ -1,4 +1,4 @@
-#include "Actor.h"
+ï»¿#include "Actor.h"
 
 namespace Engine{
 
@@ -11,7 +11,7 @@ namespace Engine{
 
 	void Actor::update(float sec){
 		onUpdate(sec);
-		//À•W‚ð“]‘—
+		//åº§æ¨™ã‚’è»¢é€
 		if(m_SceneNode!=NULL){
 			m_SceneNode->setTransform(static_cast<OMGL::Transform>(*this));
 		}

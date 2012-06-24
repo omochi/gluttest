@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "OMGL.h"
 
 namespace omgl{
@@ -20,7 +20,7 @@ namespace omgl{
 		void setPos(float x,float y,float z);
 
 		const quat &getRotQuat() const;
-		//ˆêˆÓ‚É‚È‚ç‚È‚¢
+		//ä¸€æ„ã«ãªã‚‰ãªã„
 		//vec3 getRotEular() const;
 		mat getRotMat() const;
 		void setRotQuat(const quat &quat);
@@ -34,7 +34,7 @@ namespace omgl{
 		void setScale(float s);
 		void setScale(const vec3 &scale);
 		void setScale(float x,float y,float z);
-		//•ÏXƒLƒƒƒbƒVƒ…‚Æ‚©‚ÍŒã‚Å
+		//å¤‰æ›´ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã¨ã‹ã¯å¾Œã§
 		const mat getTransform() const;
 		void setTransform(const mat &transform);
 		void setTransform(const Transform &transform);

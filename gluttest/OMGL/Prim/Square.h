@@ -1,7 +1,7 @@
-#pragma once
+ï»¿#pragma once
 #include "GLTriangles.h"
 namespace omgl{
-	//–@üZ-‚ÌXY³•ûŒ`
+	//æ³•ç·šZ-ã®XYæ­£æ–¹å½¢
 	class Square : public GLTriangles{
 	public:
 		Square();

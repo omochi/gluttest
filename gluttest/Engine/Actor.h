@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <OMGL/Transform.h>
 namespace omgl{
@@ -24,7 +24,7 @@ namespace engine{
 		void finalize();
 		void update(float sec);
 	protected:
-		//ƒ†[ƒU’è‹`‚·‚é‚æ‚ë‚µ
+		//ãƒ¦ãƒ¼ã‚¶å®šç¾©ã™ã‚‹ã‚ˆã‚ã—
 		void onInitialize(){};
 		void onFinalize(){};
 		void onUpdate(float sec){};

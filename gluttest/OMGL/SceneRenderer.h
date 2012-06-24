@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "OMGL.h"
 
@@ -15,7 +15,7 @@ namespace omgl{
 
 	class SceneRenderer{
 	private:
-		//ƒcƒŠ[„‰ñB¢ŠEÀ•W•ÏŠ·‚ÍŒvZÏ‚İ‚È‚Ì‚ÅƒXƒ^ƒbƒN‚µ‚È‚¢
+		//ãƒ„ãƒªãƒ¼å·¡å›ã€‚ä¸–ç•Œåº§æ¨™å¤‰æ›ã¯è¨ˆç®—æ¸ˆã¿ãªã®ã§ã‚¹ã‚¿ãƒƒã‚¯ã—ãªã„
 		void walkNode(const SceneNode *node);
 	public:
 		bool m_DispTriangle;

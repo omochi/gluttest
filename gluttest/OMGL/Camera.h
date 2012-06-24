@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "SceneNode.h"
 
@@ -12,12 +12,12 @@ namespace omgl{
 			m_Near=0.1f;
 			m_Far = 1000.f;
 		}
-		//ƒtƒŒ[ƒ€ƒTƒCƒY
-		//ƒrƒ…[ƒ|[ƒg‚Æ‡‚í‚¹‚é‚Æ—Ç‚¢
+		//ãƒ•ãƒ¬ãƒ¼ãƒ ã‚µã‚¤ã‚º
+		//ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆã¨åˆã‚ã›ã‚‹ã¨è‰¯ã„
 		int m_Width;
 		int m_Height;
 
-		//ƒJƒƒ‰İ’è
+		//ã‚«ãƒ¡ãƒ©è¨­å®š
 		float m_Near;
 		float m_Far;
 		virtual mat getProjection() const = 0;

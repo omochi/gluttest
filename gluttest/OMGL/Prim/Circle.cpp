@@ -1,4 +1,4 @@
-#include "Circle.h"
+﻿#include "Circle.h"
 
 namespace omgl{
 	Circle::Circle():GLTriangles(){

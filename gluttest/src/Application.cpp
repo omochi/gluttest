@@ -1,4 +1,4 @@
-#include "Application.h"
+ï»¿#include "Application.h"
 
 #include <gl/glut.h>
 #include <glm/glm.hpp>
@@ -26,9 +26,9 @@ void Application::onTimerFunc(int v){
 	uint beginTime = platform::getTimeMsec();
 
 	float sec = (beginTime-m_PrevFrameBeginTime)/1000.f;
-	//10ƒtƒŒ•ª‚®‚ç‚¢‚ªŒÀ“x
+	//10ãƒ•ãƒ¬åˆ†ãã‚‰ã„ãŒé™åº¦
 
-	//getTimeMSec‚ÌzŠÂ‚ª‹N‚«‚½ê‡‚Í•‰‚É‚È‚é
+	//getTimeMSecã®å¾ªç’°ãŒèµ·ããŸå ´åˆã¯è² ã«ãªã‚‹
 	sec = glm::clamp(sec,0.f,getFrameSec()*10.f);
 
 	m_Engine->update(sec);

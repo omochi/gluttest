@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "GLTriangles.h"
 #include "Circle.h"
 namespace omgl{

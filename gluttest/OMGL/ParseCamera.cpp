@@ -1,4 +1,4 @@
-#include "ParseCamera.h"
+﻿#include "ParseCamera.h"
 
 namespace omgl{
 	mat ParseCamera::getProjection() const{

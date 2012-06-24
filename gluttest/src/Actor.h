@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <OMGL/Transform.h>
 #include <OMGL/SceneNode.h>
@@ -19,7 +19,7 @@ namespace Engine{
 		void setSceneNode(OMGL::SceneNode *n);
 		void update(float sec);
 	protected:
-		//ƒ†[ƒU’è‹`‚·‚é‚æ‚ë‚µ
+		//ãƒ¦ãƒ¼ã‚¶å®šç¾©ã™ã‚‹ã‚ˆã‚ã—
 		void onUpdate(float sec){};
 	};
 

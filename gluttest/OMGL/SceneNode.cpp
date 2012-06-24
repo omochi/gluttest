@@ -1,10 +1,10 @@
-#include "SceneNode.h"
+﻿#include "SceneNode.h"
 #include <algorithm>
 #include "SceneRenderer.h"
 namespace omgl{
 
 	void SceneNode::addChild(SceneNode *child){
-		ASSERT(m_Parent==NULL);//�z�h�~
+		ASSERT(m_Parent==NULL);//循環防止
 		m_Children.push_back(child);
 	}
 	void SceneNode::removeFromParent(){

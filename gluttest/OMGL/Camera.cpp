@@ -1,8 +1,8 @@
-#include "Camera.h"
+ï»¿#include "Camera.h"
 
 namespace omgl{
 	mat Camera::getViewing() const{
-		//ƒJƒƒ‰‚ªƒ‚ƒfƒ‹‚Éeq•t‚¯‚·‚éƒP[ƒX‚ğl‚¦‚Ä‚¨‚«‚½‚¢‚Ì‚Åˆê”ÊŒ`
+		//ã‚«ãƒ¡ãƒ©ãŒãƒ¢ãƒ‡ãƒ«ã«è¦ªå­ä»˜ã‘ã™ã‚‹ã‚±ãƒ¼ã‚¹ã‚’è€ƒãˆã¦ãŠããŸã„ã®ã§ä¸€èˆ¬å½¢
 		mat m = glm::inverse(getWorldTransform());
 		return m;
 	}

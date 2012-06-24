@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "../SceneNode.h"
 #include <gl/glut.h>
 #include <vector>

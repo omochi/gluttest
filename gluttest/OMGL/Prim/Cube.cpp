@@ -1,4 +1,4 @@
-#include "Cube.h"
+﻿#include "Cube.h"
 
 namespace omgl{
 	Cube::Cube():SceneNode(){

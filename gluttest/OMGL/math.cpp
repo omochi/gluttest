@@ -1,4 +1,4 @@
-#include "math.h"
+﻿#include "math.h"
 
 namespace omgl{
 	mat lookAt(vec3 f,vec3 up){

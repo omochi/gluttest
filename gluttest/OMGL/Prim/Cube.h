@@ -1,11 +1,11 @@
-#pragma once
+ï»¿#pragma once
 
 #include "../SceneNode.h"
 #include "Square.h"
 
 namespace omgl{
 	//Square x 6
-	//ƒ‹[ƒrƒbƒNƒLƒ…[ƒu”zF
+	//ãƒ«ãƒ¼ãƒ“ãƒƒã‚¯ã‚­ãƒ¥ãƒ¼ãƒ–é…è‰²
 	class Cube : public SceneNode{
 	public:
 		Square m_Up;

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "Transform.h"
 
@@ -25,11 +25,11 @@ namespace omgl{
 		void addChild(SceneNode *child);
 		void removeFromParent();
 
-		//ƒcƒŠ[XV
+		//ãƒ„ãƒªãƒ¼æ›´æ–°
 		const mat &getWorldTransform() const;
 		void setWorldTransform(const mat &m);
 
-		//ŠG‚Ì‚Å‚éƒm[ƒh‚Í‚±‚ê‚ğŒp³‚·‚é
-		virtual void render(SceneRenderer *renderer) const{};//‰½‚à‚µ‚È‚¢
+		//çµµã®ã§ã‚‹ãƒãƒ¼ãƒ‰ã¯ã“ã‚Œã‚’ç¶™æ‰¿ã™ã‚‹
+		virtual void render(SceneRenderer *renderer) const{};//ä½•ã‚‚ã—ãªã„
 	};
 }

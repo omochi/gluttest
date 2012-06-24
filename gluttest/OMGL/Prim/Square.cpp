@@ -1,4 +1,4 @@
-#include "Square.h"	
+﻿#include "Square.h"	
 
 namespace omgl{
 	Square::Square():GLTriangles(){

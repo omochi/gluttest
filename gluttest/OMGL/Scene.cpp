@@ -1,4 +1,4 @@
-#include "Scene.h"
+﻿#include "Scene.h"
 
 namespace omgl{
 	Camera *Scene::getMainCamera() const{

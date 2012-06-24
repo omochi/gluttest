@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "OMGL.h"
 #include <gl/glut.h>
@@ -13,7 +13,7 @@ namespace omgl{
 		explicit Color(float r,float g,float b,float a):v(r,g,b,a){}
 		explicit Color(float r,float g,float b):v(r,g,b,1.f){}
 		
-		//“K“–‚ÈF‚ª—~‚µ‚¢
+		//é©å½“ãªè‰²ãŒæ¬²ã—ã„
 		explicit Color(int idx);
 
 		const GLfloat *ptr() const;

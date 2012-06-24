@@ -1,4 +1,4 @@
-#include "Engine.h"
+ï»¿#include "Engine.h"
 #include <algorithm>
 #include "Actor.h"
 #include "ActorHandle.h"
@@ -76,30 +76,30 @@ namespace engine{
 		
 		input().update(sec);
 		onUpdate(sec);
-		//XV
+		//æ›´æ–°
 		for(ActorList::iterator it = m_ActorList.begin();it!=m_ActorList.end();it++){
 			(*it)->update(sec);
 		}
-		//ƒnƒ“ƒhƒ‰XV
+		//ãƒãƒ³ãƒ‰ãƒ©æ›´æ–°
 		for(ActorHandleList::iterator it = m_ActorHandleList.begin();it!=m_ActorHandleList.end();it++){
 			(*it)->update();
 		}
 
-		//Ž€–Síœ
+		//æ­»äº¡å‰Šé™¤
 		for(ActorList::iterator it = m_ActorList.begin();it!=m_ActorList.end();it++){
 			if((*it)->m_Delete){
 				(*it)->finalize();
-				delete (*it);//‚Þ‚Þ‚Þ‚Þ‚Þ
+				delete (*it);//ã‚€ã‚€ã‚€ã‚€ã‚€
 				it=m_ActorList.erase(it);
 			}
 		}
 
-		//•`‰æî•ñXV
+		//æç”»æƒ…å ±æ›´æ–°
 		m_Scene.updateWorldTransform();
 		m_UIScene.updateWorldTransform();
 
 
-		//¶¬
+		//ç”Ÿæˆ
 		for(ActorList::iterator it = m_NewActorList.begin();it!=m_NewActorList.end();it++){
 			m_ActorList.push_back(*it);
 			(*it)->initialize(this);

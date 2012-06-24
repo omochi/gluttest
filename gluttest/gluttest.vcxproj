@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B0C15A0A-EA79-4525-86AE-A3AE3DF7B9D1}</ProjectGuid>
+    <RootNamespace>gluttest</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>$(ProjectDir);D:\home\lib\boost_1_49_0;$(SolutionDir)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>D:\home\lib\boost_1_49_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>$(SolutionDir)\src;D:\home\lib\boost_1_49_0;$(SolutionDir)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>D:\home\lib\boost_1_49_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Engine\ActorHandle.cpp" />
+    <ClCompile Include="Engine\Engine.cpp" />
+    <ClCompile Include="Engine\Input.cpp" />
+    <ClCompile Include="OMGL\Camera.cpp" />
+    <ClCompile Include="OMGL\Color.cpp" />
+    <ClCompile Include="OMGL\math.cpp" />
+    <ClCompile Include="OMGL\OrthoCamera.cpp" />
+    <ClCompile Include="OMGL\ParseCamera.cpp" />
+    <ClCompile Include="OMGL\Prim\Arrow.cpp" />
+    <ClCompile Include="OMGL\Prim\ArrowXYZ.cpp" />
+    <ClCompile Include="OMGL\Prim\Circle.cpp" />
+    <ClCompile Include="OMGL\Prim\Cone.cpp" />
+    <ClCompile Include="OMGL\Prim\Cube.cpp" />
+    <ClCompile Include="OMGL\Prim\Cylinder.cpp" />
+    <ClCompile Include="OMGL\Prim\GLTriangles.cpp" />
+    <ClCompile Include="OMGL\Prim\Sphere.cpp" />
+    <ClCompile Include="OMGL\Prim\Square.cpp" />
+    <ClCompile Include="OMGL\Scene.cpp" />
+    <ClCompile Include="OMGL\SceneNode.cpp" />
+    <ClCompile Include="OMGL\SceneRenderer.cpp" />
+    <ClCompile Include="OMGL\Transform.cpp" />
+    <ClCompile Include="Engine\Actor.cpp" />
+    <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\platform.h" />
+    <ClCompile Include="src\main.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</MultiProcessorCompilation>
+    </ClCompile>
+    <ClCompile Include="src\platform.cpp" />
+    <ClCompile Include="src\Rect.cpp" />
+    <ClCompile Include="src\TestApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\ActorHandle.h" />
+    <ClInclude Include="Engine\Engine.h" />
+    <ClInclude Include="Engine\Input.h" />
+    <ClInclude Include="OMGL\Camera.h" />
+    <ClInclude Include="OMGL\Color.h" />
+    <ClInclude Include="OMGL\math.h" />
+    <ClInclude Include="OMGL\OMGL.h" />
+    <ClInclude Include="OMGL\OrthoCamera.h" />
+    <ClInclude Include="OMGL\Prim\Arrow.h" />
+    <ClInclude Include="OMGL\Prim\ArrowXYZ.h" />
+    <ClInclude Include="OMGL\Prim\Circle.h" />
+    <ClInclude Include="OMGL\Prim\Cone.h" />
+    <ClInclude Include="OMGL\Prim\Cube.h" />
+    <ClInclude Include="OMGL\Prim\Cylinder.h" />
+    <ClInclude Include="OMGL\Prim\GLTriangles.h" />
+    <ClInclude Include="OMGL\ParseCamera.h" />
+    <ClInclude Include="OMGL\Prim\Sphere.h" />
+    <ClInclude Include="OMGL\Prim\Square.h" />
+    <ClInclude Include="OMGL\Transform.h" />
+    <ClInclude Include="Engine\Actor.h" />
+    <ClInclude Include="src\Application.h" />
+    <ClInclude Include="src\Rect.h" />
+    <ClInclude Include="src\TestApp.h" />
+    <ClInclude Include="src\type.h" />
+    <ClInclude Include="OMGL\Scene.h" />
+    <ClInclude Include="OMGL\SceneNode.h" />
+    <ClInclude Include="OMGL\SceneRenderer.h" />
+    <ClInclude Include="src\util.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,21 +1,17 @@
 ﻿#pragma once
+#include <OMBase/OMBase.h>
 
-#include "type.h"
+#ifdef _WIN32
+#include <MMSystem.h>
+#endif
 
-
-namespace engine{
-	class Engine;
-}
+#include <Engine/Engine.h>
 
 class Application{
 private:
 	engine::Engine *m_Engine;
 
 	int m_Fps;
-
-
-	//int m_ViewportWidth;
-	//int m_ViewportHeight;
 
 	uint updateFrameCount;
 	uint renderCount;
@@ -31,7 +27,7 @@ private:
 
 	void updateFrame(float sec);
 
-	void initialize(int argc,char *argv[]);
+	bool initialize(int argc,char *argv[]);
 	void finalize();
 
 	void onDisplayFunc();
@@ -44,9 +40,6 @@ private:
 	static void timerFunc(int value);
 	static void idleFunc();
 
-//	static void keyboardFunc(unsigned char key,int x,int y);
-//	static void keyboardUpFunc(unsigned char key,int x,int y);
-//	static void entryFunc(int val);
 	static void mouseFunc(int button, int state, int x, int y);
 	static void motionFunc(int x,int y);
 	static void passiveMotionFunc(int x,int y);

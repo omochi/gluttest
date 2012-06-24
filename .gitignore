@@ -3,4 +3,5 @@
 *.suo
 *.opensdf
 ipch
+dll
 Debug

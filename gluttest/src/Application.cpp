@@ -1,10 +1,7 @@
 ﻿#include "Application.h"
 
-#include <gl/glut.h>
-#include <glm/glm.hpp>
 #include <Engine/Engine.h>
 
-#include "platform.h"
 #include "TestApp.h"
 
 void Application::setFps(int fps){
@@ -23,7 +20,7 @@ void Application::onReshapeFunc(int w,int h){
 
 }
 void Application::onTimerFunc(int v){
-	uint beginTime = platform::getTimeMsec();
+	uint beginTime = timeGetTime();
 
 	float sec = (beginTime-m_PrevFrameBeginTime)/1000.f;
 	//10フレ分ぐらいが限度
@@ -37,7 +34,7 @@ void Application::onTimerFunc(int v){
 
 	m_PrevFrameBeginTime = beginTime;
 
-	uint endTime = platform::getTimeMsec();
+	uint endTime = timeGetTime();
 
 	int sleepTime = glm::max(0,getFrameMsec() - static_cast<int>(endTime-beginTime));
 	glutTimerFunc(sleepTime,timerFunc,0);
@@ -50,43 +47,59 @@ void Application::onDisplayFunc(){
 	renderCount++;
 }
 
-void Application::initialize(int argc,char *argv[]){
+bool Application::initialize(int argc,char *argv[]){
 	glutInit(&argc,argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
 	glutInitWindowSize(1280,720);
 	glutCreateWindow(argv[0]);
+
+	GLenum err;
+	err = glewInit();
+	if (err != GLEW_OK){
+		fprintf(stderr,"glewInit:%s\n",glewGetErrorString(err));
+		return false;
+	}
+
+	printf("OpenGL version = %s\n",glGetString(GL_VERSION));
+	if(!glewIsSupported("GL_VERSION_3_0")){
+		fprintf(stderr,"OpenGL 3.0 is not supported\n");
+		return false;
+	}
+
 	glutDisplayFunc(Application::displayFunc);
 	glutReshapeFunc(Application::reshapeFunc);
 	glutIdleFunc(Application::idleFunc);
-
 	glutMouseFunc(Application::mouseFunc);
 	glutMotionFunc(Application::motionFunc);
 	glutPassiveMotionFunc(Application::passiveMotionFunc);
-
 	glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);
+	glutTimerFunc(0,Application::timerFunc,0);
 
-	m_Engine = new TestApp();
+	timeBeginPeriod(1);
 
 	updateFrameCount=0;
 	renderCount=0;
 	setFps(60);
-	platform::initialize();
+	m_PrevFrameBeginTime = timeGetTime();
+	
+	m_Engine = new TestApp();
 	m_Engine->initialize();
 
-	m_PrevFrameBeginTime = platform::getTimeMsec();
-	glutTimerFunc(0,Application::timerFunc,0);
-
+	return true;
 }
 void Application::finalize(){
 	m_Engine->finalize();
-	platform::finalize();
+
+	timeEndPeriod(1);
 
 	SAFE_DELETE(m_Engine);
 }
 
 int Application::main(int argc,char *argv[]){
-	initialize(argc,argv);
-	glutMainLoop();
+	bool ok = initialize(argc,argv);
+	if(ok){
+		glutMainLoop();
+	}
 	finalize();
 	return 0;
 }
@@ -108,8 +121,6 @@ void Application::idleFunc(){
 void Application::displayFunc(){
 	instance().onDisplayFunc();
 }
-
-
 
 void Application::mouseFunc(int button, int state, int x, int y){
 	instance().m_Engine->input().onGLUTMouseFunc(button,state,x,y);

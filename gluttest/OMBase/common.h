@@ -9,7 +9,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
+
+
+#include <gl/glew.h>
 #include <gl/glut.h>
+
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 #include <glm/gtx/constants.hpp>

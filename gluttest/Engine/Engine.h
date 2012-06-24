@@ -1,12 +1,7 @@
 ﻿#pragma once
-#include <vector>
-#include <src/util.h>
-#include <src/Rect.h>
 
+#include <OMBase/OMBase.h>
 #include <OMGL/OMGL.h>
-#include <OMGL/Scene.h>
-#include <OMGL/OrthoCamera.h>
-#include <OMGL/SceneRenderer.h>
 
 #include "Input.h"
 

@@ -18,15 +18,12 @@
     <Filter Include="Engine">
       <UniqueIdentifier>{ae619de5-c597-44d2-86d7-187642f17d60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="OMBase">
+      <UniqueIdentifier>{410a384d-26b3-4d55-a0d9-2f96028e2de0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\platform.h">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\platform.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="OMGL\SceneNode.cpp">
@@ -71,9 +68,6 @@
     <ClCompile Include="Engine\Input.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="src\Rect.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="OMGL\Prim\Circle.cpp">
       <Filter>OMGL\Prim</Filter>
     </ClCompile>
@@ -81,9 +75,6 @@
       <Filter>OMGL\Prim</Filter>
     </ClCompile>
     <ClCompile Include="OMGL\Prim\Cone.cpp">
-      <Filter>OMGL\Prim</Filter>
-    </ClCompile>
-    <ClCompile Include="OMGL\Prim\GLTriangles.h">
       <Filter>OMGL\Prim</Filter>
     </ClCompile>
     <ClCompile Include="OMGL\Prim\GLTriangles.cpp">
@@ -107,14 +98,11 @@
     <ClCompile Include="OMGL\OrthoCamera.cpp">
       <Filter>OMGL</Filter>
     </ClCompile>
+    <ClCompile Include="OMBase\Rect.cpp">
+      <Filter>OMBase</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\util.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="OMGL\OMGL.h">
-      <Filter>OMGL</Filter>
-    </ClInclude>
     <ClInclude Include="OMGL\SceneNode.h">
       <Filter>OMGL</Filter>
     </ClInclude>
@@ -126,9 +114,6 @@
     </ClInclude>
     <ClInclude Include="OMGL\SceneRenderer.h">
       <Filter>OMGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\type.h">
-      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="OMGL\Color.h">
       <Filter>OMGL</Filter>
@@ -160,9 +145,6 @@
     <ClInclude Include="Engine\Input.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="src\Rect.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="OMGL\Prim\Circle.h">
       <Filter>OMGL\Prim</Filter>
     </ClInclude>
@@ -191,6 +173,27 @@
       <Filter>OMGL</Filter>
     </ClInclude>
     <ClInclude Include="OMGL\OrthoCamera.h">
+      <Filter>OMGL</Filter>
+    </ClInclude>
+    <ClInclude Include="OMBase\Rect.h">
+      <Filter>OMBase</Filter>
+    </ClInclude>
+    <ClInclude Include="OMBase\type.h">
+      <Filter>OMBase</Filter>
+    </ClInclude>
+    <ClInclude Include="OMBase\util.h">
+      <Filter>OMBase</Filter>
+    </ClInclude>
+    <ClInclude Include="OMBase\OMBase.h">
+      <Filter>OMBase</Filter>
+    </ClInclude>
+    <ClInclude Include="OMGL\common.h">
+      <Filter>OMGL</Filter>
+    </ClInclude>
+    <ClInclude Include="OMBase\common.h">
+      <Filter>OMBase</Filter>
+    </ClInclude>
+    <ClInclude Include="OMGL\OMGL.h">
       <Filter>OMGL</Filter>
     </ClInclude>
   </ItemGroup>

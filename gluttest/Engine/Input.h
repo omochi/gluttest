@@ -1,12 +1,9 @@
 ﻿#pragma once
 
-#include <src/util.h>
-#include <src/type.h>
-
-#include <gl/glut.h>
+#include <OMBase/OMBase.h>
 
 #ifdef _WIN32
-#include<Winuser.h>
+#include <Winuser.h>
 #endif
 
 namespace engine{

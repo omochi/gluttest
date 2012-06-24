@@ -1,7 +1,6 @@
 ﻿#pragma once
 
-#include <src/type.h>
-#include <glm/glm.hpp>
+#include "common.h"
 
 namespace omgl{
 	mat lookAt(vec3 front,vec3 up);

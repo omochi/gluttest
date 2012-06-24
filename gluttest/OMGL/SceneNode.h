@@ -1,8 +1,6 @@
 ﻿#pragma once
 
 #include "Transform.h"
-
-#include <vector>
 #include "SceneRenderer.h"
 namespace omgl{
 	class SceneNode;

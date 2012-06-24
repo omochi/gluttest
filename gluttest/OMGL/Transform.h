@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "OMGL.h"
+#include "common.h"
 
 namespace omgl{
 	class Transform{

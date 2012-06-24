@@ -1,4 +1,5 @@
 ﻿#include "Transform.h"
+#include "math.h"
 namespace omgl{
 	const vec3 &Transform::getPos() const{
 		return m_Pos;

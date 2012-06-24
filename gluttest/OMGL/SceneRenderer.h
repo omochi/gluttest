@@ -1,8 +1,6 @@
 ﻿#pragma once
 
-#include "OMGL.h"
-
-#include <gl/glut.h>
+#include "common.h"
 
 namespace omgl{
 	class SceneNode;

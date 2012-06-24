@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "../SceneNode.h"
-#include <gl/glut.h>
-#include <vector>
+
+#include "../Color.h"
 
 namespace omgl{
 	class GLTriangles : public SceneNode{

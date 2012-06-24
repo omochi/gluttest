@@ -1,13 +1,13 @@
-﻿#pragma once
-
-#include<src/util.h>
-#include<src/type.h>
-
-#include<glm/glm.hpp>
-#include<glm/ext.hpp>
-//#include<glm/gtx/string_cast.hpp>
-
+#pragma once
+#include "common.h"
 #include "math.h"
-
-
 #include "Color.h"
+#include "Transform.h"
+#include "Scene.h"
+#include "SceneNode.h"
+#include "SceneRenderer.h"
+#include "ParseCamera.h"
+#include "OrthoCamera.h"
+
+#include "Prim/ArrowXYZ.h"
+#include "Prim/Cube.h"

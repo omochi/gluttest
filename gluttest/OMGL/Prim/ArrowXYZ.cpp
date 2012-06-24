@@ -1,5 +1,7 @@
 ﻿#include "ArrowXYZ.h"
 
+#include "../math.h"
+
 namespace omgl{
 	ArrowXYZ::ArrowXYZ():SceneNode(){
 

@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include "GLTriangles.h"
-#include <gl/glut.h>
 
 namespace omgl{
 	class Circle : public GLTriangles{

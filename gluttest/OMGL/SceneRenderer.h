@@ -2,6 +2,10 @@
 
 #include "common.h"
 
+
+#define SCENE_RENDERER_IMPL_VISIT_RENDERER() \
+	virtual void visitRenderer(omgl::SceneRenderer *r)const{ r->renderNodeImpl(this); }
+
 namespace omgl{
 	class SceneNode;
 	class Scene;
@@ -12,21 +16,13 @@ namespace omgl{
 	class Circle;
 
 	class SceneRenderer{
-	private:
-		//ツリー巡回。世界座標変換は計算済みなのでスタックしない
+	protected:
 		void walkNode(const SceneNode *node);
 	public:
-		bool m_DispTriangle;
+		virtual void renderNode(const SceneNode *n);
+		virtual void renderScene(const Scene *scene) = 0;
 
-		SceneRenderer(){
-			m_DispTriangle = false;
-		}
-
-		void renderNode(const GLTriangles *n);
-
-
-		void renderScene(const Scene *scene);
-		void renderScene(const Scene *scene,const Camera *camera);
-
+		//Visitorパターン Acceptメソッド
+		virtual void renderNodeImpl(const GLTriangles *n){};
 	};
 }

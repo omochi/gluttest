@@ -11,4 +11,20 @@ namespace base{
 #endif
 		return fp;
 	}
+
+	int snprintf(char *str,size_t len,const char *format,...){
+		int ret = 0;
+		va_list args;
+		va_start(args,format);
+
+#ifdef _WIN32
+		ret = vsnprintf_s(str,len,_TRUNCATE,format,args);
+#else
+		ret = vsnprintf(str,len,format,args);
+#endif
+		va_end(args);
+
+		return ret;
+	}
 }
+

@@ -6,6 +6,7 @@ namespace omgl{
 	void SceneNode::addChild(SceneNode *child){
 		ASSERT(m_Parent==NULL);//循環防止
 		m_Children.push_back(child);
+		child->m_Parent = this;
 	}
 	void SceneNode::removeFromParent(){
 		if(m_Parent!=NULL){
@@ -18,6 +19,9 @@ namespace omgl{
 	const SceneNodeList &SceneNode::getChildren() const{
 		return m_Children;
 	}
+	SceneNode *SceneNode::getParent() const{
+		return m_Parent;
+	}
 
 	const mat &SceneNode::getWorldTransform() const{
 		return m_WorldTransform;
@@ -25,6 +29,22 @@ namespace omgl{
 
 	void SceneNode::setWorldTransform(const mat &m){
 		m_WorldTransform = m;
+	}
+
+	bool SceneNode::isLoadRequesting() const{
+		return m_LoadReq;
+	}
+	bool SceneNode::isLoaded() const { return m_Loaded; }
+
+	bool SceneNode::load(){
+		bool ok = loadImpl();
+		m_Loaded = ok;
+		m_LoadReq = false;
+		return ok;
+	}
+	void SceneNode::release(){
+		releaseImpl();
+		m_Loaded=false;
 	}
 
 }

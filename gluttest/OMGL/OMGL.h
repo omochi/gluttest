@@ -8,9 +8,10 @@
 #include "SceneRenderer.h"
 #include "ParseCamera.h"
 #include "OrthoCamera.h"
+#include "GLBufferObject.h"
 
 #include "Prim/ArrowXYZ.h"
 #include "Prim/Cube.h"
 
-
+#include "DefaultRenderer.h"
 #include "Shader/GLProgram.h"

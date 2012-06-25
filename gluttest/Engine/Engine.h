@@ -22,10 +22,11 @@ namespace engine{
 		ActorHandleList m_ActorHandleList;
 
 		omgl::Scene m_Scene;
-		omgl::SceneRenderer m_Renderer;
+		omgl::DefaultRenderer m_Renderer;
 
+	protected:
 		omgl::Scene m_UIScene;
-		omgl::SceneRenderer m_UIRenderer;
+		omgl::DefaultRenderer m_UIRenderer;
 		omgl::OrthoCamera m_UICamera;
 	public:
 		omgl::Scene & scene() ;

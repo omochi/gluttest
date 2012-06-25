@@ -11,15 +11,16 @@ namespace omgl{
 	private:
 		//一個
 		Camera *m_MainCamera;
+
+		void updateNode(SceneNode *node);
 	public:
 		Camera *getMainCamera() const;
 		void setMainCamera(Camera *camera);
 
 		//addChild
 		void addMainCamera(Camera *cam);
-
-		void updateWorldTransform();
-		void updateWorldTransform(SceneNode *node,const mat &base);
+		
+		void update();
 
 	};
 }

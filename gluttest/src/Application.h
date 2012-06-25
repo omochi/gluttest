@@ -11,10 +11,9 @@ class Application{
 private:
 	engine::Engine *m_Engine;
 
+
 	int m_Fps;
 
-	uint updateFrameCount;
-	uint renderCount;
 	uint m_PrevFrameBeginTime;
 
 	Application(){};
@@ -43,6 +42,8 @@ private:
 	static void mouseFunc(int button, int state, int x, int y);
 	static void motionFunc(int x,int y);
 	static void passiveMotionFunc(int x,int y);
+
+	void exceptionHandler(const std::exception &e);
 	
 public:	
 	static Application &instance();

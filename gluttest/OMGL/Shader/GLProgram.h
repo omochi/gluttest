@@ -1,5 +1,6 @@
 #pragma once
 #include <OMBase/OMBase.h>
+#include "../common.h"
 #include "GLShader.h"
 namespace omgl{
 	class GLProgram{
@@ -21,8 +22,8 @@ namespace omgl{
 		bool load();
 		bool load(std::string vshPath,std::string fshPath);
 
-		void bindAttribLocation(GLuint index,const GLchar *name);
-		GLint getUniformLocation(const GLchar *name);
+		void bindAttrib(GLuint index,const GLchar *name);
+		GLint getUniform(const GLchar *name);
 
 		void use();
 		

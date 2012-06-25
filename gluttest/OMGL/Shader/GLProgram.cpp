@@ -2,6 +2,7 @@
 
 namespace omgl{
 	bool GLProgram::create(){
+		if(m_Id!=0)return false;
 		m_Id = glCreateProgram();
 		if(m_Id==0)return false;
 		return true;
@@ -53,17 +54,19 @@ namespace omgl{
 		return log;
 	}
 
-	void GLProgram::bindAttribLocation(GLuint index,const GLchar *name){
+	void GLProgram::bindAttrib(GLuint index,const GLchar *name){
 		if(m_Id!=0){
 			glBindAttribLocation(m_Id,index,name);
+			ASSERT_GL();
 		}
 	}
-	GLint GLProgram::getUniformLocation(const GLchar *name){
+	GLint GLProgram::getUniform(const GLchar *name){
+		GLint ret = -1;
 		if(m_Id!=0){
-			return glGetUniformLocation(m_Id,name);
-		}else{
-			return -1;
+			ret = glGetUniformLocation(m_Id,name);
+			ASSERT_GL();
 		}
+		return ret;
 	}
 
 	void GLProgram::use(){

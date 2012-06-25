@@ -49,6 +49,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>$(SolutionDir)\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MinimalRebuild>false</MinimalRebuild>
+      <ExceptionHandling>Async</ExceptionHandling>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -98,6 +99,8 @@
     <ClCompile Include="OMBase\Rect.cpp" />
     <ClCompile Include="OMGL\Camera.cpp" />
     <ClCompile Include="OMGL\Color.cpp" />
+    <ClCompile Include="OMGL\DefaultRenderer.cpp" />
+    <ClCompile Include="OMGL\GLBufferObject.cpp" />
     <ClCompile Include="OMGL\math.cpp" />
     <ClCompile Include="OMGL\OrthoCamera.cpp" />
     <ClCompile Include="OMGL\ParseCamera.cpp" />
@@ -141,6 +144,8 @@
     <ClInclude Include="OMGL\Camera.h" />
     <ClInclude Include="OMGL\Color.h" />
     <ClInclude Include="OMGL\common.h" />
+    <ClInclude Include="OMGL\DefaultRenderer.h" />
+    <ClInclude Include="OMGL\GLBufferObject.h" />
     <ClInclude Include="OMGL\math.h" />
     <ClInclude Include="OMGL\OMGL.h" />
     <ClInclude Include="OMGL\OrthoCamera.h" />

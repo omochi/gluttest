@@ -2,6 +2,7 @@
 
 namespace omgl{
 	bool GLShader::create(GLenum type){
+		if(m_Id!=0)return false;
 		m_Type = type;
 		m_Id = glCreateShader(type);
 		if(m_Id == 0)return false;

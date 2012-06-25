@@ -95,8 +95,8 @@ namespace engine{
 		}
 
 		//描画情報更新
-		m_Scene.updateWorldTransform();
-		m_UIScene.updateWorldTransform();
+		m_Scene.update();
+		m_UIScene.update();
 
 
 		//生成
@@ -118,12 +118,14 @@ namespace engine{
 		if(cam!=NULL){
 			cam->m_Width = m_Viewport.width();
 			cam->m_Height = m_Viewport.height();
-			m_Renderer.renderScene(&m_Scene,cam);
+			m_Renderer.renderScene(&m_Scene);
 		}
 
 		glClear(GL_DEPTH_BUFFER_BIT);
 		m_UICamera.m_Width = m_Viewport.width();
 		m_UICamera.m_Height = m_Viewport.height();
-		m_UIRenderer.renderScene(&m_UIScene,&m_UICamera);
+		m_UIRenderer.renderScene(&m_UIScene);
+
+		glutSwapBuffers();
 	}
 }

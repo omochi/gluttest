@@ -122,6 +122,12 @@
     <ClCompile Include="src\Shader\Test1.cpp">
       <Filter>src\Shader</Filter>
     </ClCompile>
+    <ClCompile Include="OMGL\DefaultRenderer.cpp">
+      <Filter>OMGL</Filter>
+    </ClCompile>
+    <ClCompile Include="OMGL\GLBufferObject.cpp">
+      <Filter>OMGL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OMGL\SceneNode.h">
@@ -231,6 +237,12 @@
     </ClInclude>
     <ClInclude Include="src\Shader\Test1.h">
       <Filter>src\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="OMGL\DefaultRenderer.h">
+      <Filter>OMGL</Filter>
+    </ClInclude>
+    <ClInclude Include="OMGL\GLBufferObject.h">
+      <Filter>OMGL</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

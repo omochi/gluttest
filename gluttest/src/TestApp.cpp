@@ -1,5 +1,7 @@
 ﻿#include "TestApp.h"
 
+#include "Shader/Test1.h"
+
 void TestApp::onInitialize(){
 
 	uiArw.setScale(100,100,100);
@@ -10,19 +12,29 @@ void TestApp::onInitialize(){
 	cam.m_Far = 1000.f;
 	cam.setPos(vec3(0,0,5.f));
 	scene().addMainCamera(&cam);
-	
+
+
 	camYaw=M_PI;
 	camPitch=0;
 
 	cube.setPos(0,0,0.f);
 	scene().addChild(&cube);
 
-	omgl::GLProgram prog;
-	if(prog.load("shader/test1.vsh","shader/test1.fsh")){
-		printf("shader create success");
+	cyl.setPos(2,0,0);
+	//scene().addChild(&cyl);
+
+	cone.setPos(-2,0,0);
+	//scene().addChild(&cone);
+
+	sph.setPos(0,2,0);
+	//scene().addChild(&sph);
+
+	cir.setPos(2,2,0);
+	//scene().addChild(&cir);
+
+	if(!sh.load()){
+		FAIL("");
 	}
-
-
 
 }
 
@@ -37,7 +49,7 @@ void TestApp::onUpdate(float sec){
 	cube.setRotQuat(spin);
 
 	omgl::Camera *cam = scene().getMainCamera();
-	
+
 	std::string str;
 
 	if(input().isOnKeyPressed(engine::KeyCodeP)){
@@ -45,7 +57,10 @@ void TestApp::onUpdate(float sec){
 		printf("%s\n",str.c_str());
 	}
 	if(input().isOnKeyPressed(engine::KeyCodeL)){
-		renderer().m_DispTriangle = ! renderer().m_DispTriangle;
+		omgl::DefaultRenderer *r = dynamic_cast<omgl::DefaultRenderer *>(&renderer()); 
+		if(r){
+			r->m_DispTriangle = ! r->m_DispTriangle;
+		}
 	}
 
 
@@ -78,9 +93,9 @@ void TestApp::onUpdate(float sec){
 		move.y -= 1.f;
 	}
 
-	
+
 	mat rot = glm::eulerAngleYXZ(camYaw,0.f,0.f);
-	
+
 	move = vec3(glm::mul(rot,vec4(move,1.f)));
 
 	cam->setPos(cam->getPos()+move*sec);
@@ -96,4 +111,35 @@ void TestApp::onUpdate(float sec){
 	float uy = - (viewport().top() +120.f  - viewport().center().y);
 	uiArw.setPos(ux,uy,0);
 
+}
+
+void TestApp::render(){
+
+	glViewport(viewport().left(),viewport().top(),
+		viewport().width(),viewport().height());
+
+	glClearColor(0.0f,0.0f,0.0f,1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	omgl::Camera *cam = scene().getMainCamera();
+	if(cam!=NULL){
+		cam->m_Width = viewport().width();
+		cam->m_Height = viewport().height();
+		
+		//dynamic_cast<omgl::DefaultRenderer &>(renderer()).m_DispTriangle=true;
+		//renderer().renderScene(&scene());
+
+		sh.renderScene(&scene());
+	}
+	
+	
+	glClear(GL_DEPTH_BUFFER_BIT);
+	m_UICamera.m_Width = viewport().width();
+	m_UICamera.m_Height = viewport().height();
+	//m_UIRenderer.renderScene(&m_UIScene);
+	
+	sh.renderScene(&m_UIScene);
+
+	glutSwapBuffers();
+	
 }

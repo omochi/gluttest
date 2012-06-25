@@ -15,36 +15,38 @@ float Application::getFrameSec(){
 }
 
 void Application::onReshapeFunc(int w,int h){
-
 	m_Engine->setViewport(Rect(0,0,w,h));
-
 }
 void Application::onTimerFunc(int v){
+
 	uint beginTime = timeGetTime();
-
 	float sec = (beginTime-m_PrevFrameBeginTime)/1000.f;
-	//10フレ分ぐらいが限度
-
-	//getTimeMSecの循環が起きた場合は負になる
+	//スキップは10フレ分ぐらいが限度、getTimeMSecの循環が起きた場合は負になる
 	sec = glm::clamp(sec,0.f,getFrameSec()*10.f);
 
-	m_Engine->update(sec);
-
+	try{
+		m_Engine->update(sec);
+	}catch(const std::exception &e){
+		exceptionHandler(e);
+	}
 	glutPostRedisplay();
 
 	m_PrevFrameBeginTime = beginTime;
-
 	uint endTime = timeGetTime();
-
 	int sleepTime = glm::max(0,getFrameMsec() - static_cast<int>(endTime-beginTime));
 	glutTimerFunc(sleepTime,timerFunc,0);
+
 }
 void Application::onIdleFunc(){
 }
 void Application::onDisplayFunc(){
-	m_Engine->render();
-	glutSwapBuffers();
-	renderCount++;
+
+	try{
+		m_Engine->render();
+	}catch(const std::exception &e){
+		exceptionHandler(e);
+	}
+
 }
 
 bool Application::initialize(int argc,char *argv[]){
@@ -77,11 +79,9 @@ bool Application::initialize(int argc,char *argv[]){
 
 	timeBeginPeriod(1);
 
-	updateFrameCount=0;
-	renderCount=0;
 	setFps(60);
 	m_PrevFrameBeginTime = timeGetTime();
-	
+
 	m_Engine = new TestApp();
 	m_Engine->initialize();
 
@@ -93,6 +93,17 @@ void Application::finalize(){
 	timeEndPeriod(1);
 
 	SAFE_DELETE(m_Engine);
+}
+
+void Application::exceptionHandler(const std::exception &e){
+
+	char buf[1000];
+	base::snprintf(buf,sizeof(buf),"exception:%s\n",e.what());
+
+	fprintf(stderr,buf);
+	OutputDebugString(buf);
+
+	exit(EXIT_FAILURE);
 }
 
 int Application::main(int argc,char *argv[]){

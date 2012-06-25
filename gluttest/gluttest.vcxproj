@@ -58,6 +58,12 @@
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
+    <PostBuildEvent>
+      <Command>copy $(TargetPath) $(ProjectDir)\app</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>post build step</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -79,11 +85,16 @@
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
+    <PostBuildEvent>
+      <Command>copy $(TargetPath) $(ProjectDir)\app</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Engine\ActorHandle.cpp" />
     <ClCompile Include="Engine\Engine.cpp" />
+    <ClCompile Include="OMBase\FileReader.cpp" />
     <ClCompile Include="Engine\Input.cpp" />
+    <ClCompile Include="OMBase\crt.cpp" />
     <ClCompile Include="OMBase\Rect.cpp" />
     <ClCompile Include="OMGL\Camera.cpp" />
     <ClCompile Include="OMGL\Color.cpp" />
@@ -102,6 +113,8 @@
     <ClCompile Include="OMGL\Scene.cpp" />
     <ClCompile Include="OMGL\SceneNode.cpp" />
     <ClCompile Include="OMGL\SceneRenderer.cpp" />
+    <ClCompile Include="OMGL\Shader\GLProgram.cpp" />
+    <ClCompile Include="OMGL\Shader\GLShader.cpp" />
     <ClCompile Include="OMGL\Transform.cpp" />
     <ClCompile Include="Engine\Actor.cpp" />
     <ClCompile Include="src\Application.cpp" />
@@ -111,13 +124,16 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</MultiProcessorCompilation>
     </ClCompile>
+    <ClCompile Include="src\Shader\Test1.cpp" />
     <ClCompile Include="src\TestApp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="OMBase\FileReader.h" />
     <ClInclude Include="OMBase\common.h" />
     <ClInclude Include="Engine\ActorHandle.h" />
     <ClInclude Include="Engine\Engine.h" />
     <ClInclude Include="Engine\Input.h" />
+    <ClInclude Include="OMBase\crt.h" />
     <ClInclude Include="OMBase\OMBase.h" />
     <ClInclude Include="OMBase\Rect.h" />
     <ClInclude Include="OMBase\type.h" />
@@ -138,9 +154,12 @@
     <ClInclude Include="OMGL\ParseCamera.h" />
     <ClInclude Include="OMGL\Prim\Sphere.h" />
     <ClInclude Include="OMGL\Prim\Square.h" />
+    <ClInclude Include="OMGL\Shader\GLProgram.h" />
+    <ClInclude Include="OMGL\Shader\GLShader.h" />
     <ClInclude Include="OMGL\Transform.h" />
     <ClInclude Include="Engine\Actor.h" />
     <ClInclude Include="src\Application.h" />
+    <ClInclude Include="src\Shader\Test1.h" />
     <ClInclude Include="src\TestApp.h" />
     <ClInclude Include="OMGL\Scene.h" />
     <ClInclude Include="OMGL\SceneNode.h" />

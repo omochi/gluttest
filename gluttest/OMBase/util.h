@@ -5,13 +5,13 @@
 #define ASSERT(exp) {\
 	if(!(exp)){\
 		fprintf(stderr,"assert error:%s:%s,%s,%d",#exp,__FILE__,__FUNCTION__,__LINE__);\
-		exit(EXIT_FAILURE);\
+		throw std::exception();\
 	}\
 }
 
 #define FAIL(msg){\
 	fprintf(stderr,"fail:%s:%s,%s,%d",msg,__FILE__,__FUNCTION__,__LINE__);\
-	exit(EXIT_FAILURE);\
+	throw std::exception();\
 }
 
 #define ARRAY_SIZE(x) (sizeof(x) / sizeof( (x)[0]) )

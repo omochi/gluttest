@@ -63,7 +63,7 @@ bool Application::initialize(int argc,char *argv[]){
 	printf("OpenGL version = %s\n",glGetString(GL_VERSION));
 	if(!glewIsSupported("GL_VERSION_3_0")){
 		fprintf(stderr,"OpenGL 3.0 is not supported\n");
-		return false;
+		return false ;
 	}
 
 	glutDisplayFunc(Application::displayFunc);

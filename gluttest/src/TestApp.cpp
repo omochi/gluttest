@@ -1,5 +1,4 @@
 ﻿#include "TestApp.h"
-#include<glm/ext.hpp>
 
 void TestApp::onInitialize(){
 
@@ -17,6 +16,12 @@ void TestApp::onInitialize(){
 
 	cube.setPos(0,0,0.f);
 	scene().addChild(&cube);
+
+	omgl::GLProgram prog;
+	if(prog.load("shader/test1.vsh","shader/test1.fsh")){
+		printf("shader create success");
+	}
+
 
 
 }

@@ -21,6 +21,12 @@
     <Filter Include="OMBase">
       <UniqueIdentifier>{410a384d-26b3-4d55-a0d9-2f96028e2de0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="OMGL\Shader">
+      <UniqueIdentifier>{ec3f8f41-2f9c-4f4c-9f98-14798c1a527c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Shader">
+      <UniqueIdentifier>{aed58a9f-67ad-40a7-b583-7b66447fb2a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -100,6 +106,21 @@
     </ClCompile>
     <ClCompile Include="OMBase\Rect.cpp">
       <Filter>OMBase</Filter>
+    </ClCompile>
+    <ClCompile Include="OMBase\crt.cpp">
+      <Filter>OMBase</Filter>
+    </ClCompile>
+    <ClCompile Include="OMBase\FileReader.cpp">
+      <Filter>OMBase</Filter>
+    </ClCompile>
+    <ClCompile Include="OMGL\Shader\GLShader.cpp">
+      <Filter>OMGL\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="OMGL\Shader\GLProgram.cpp">
+      <Filter>OMGL\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shader\Test1.cpp">
+      <Filter>src\Shader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +216,21 @@
     </ClInclude>
     <ClInclude Include="OMGL\OMGL.h">
       <Filter>OMGL</Filter>
+    </ClInclude>
+    <ClInclude Include="OMBase\crt.h">
+      <Filter>OMBase</Filter>
+    </ClInclude>
+    <ClInclude Include="OMBase\FileReader.h">
+      <Filter>OMBase</Filter>
+    </ClInclude>
+    <ClInclude Include="OMGL\Shader\GLShader.h">
+      <Filter>OMGL\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="OMGL\Shader\GLProgram.h">
+      <Filter>OMGL\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shader\Test1.h">
+      <Filter>src\Shader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

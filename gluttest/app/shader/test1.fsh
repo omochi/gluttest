@@ -5,9 +5,14 @@
 #endif
 
 uniform vec4 uColor;
+
+uniform bool uNormalEnabled;
 varying vec3 vLightWeight;
 
 void main(){
-	gl_FragColor = vec4(uColor.xyz *  vLightWeight , uColor.w);
-	
+	if(uNormalEnabled){
+		gl_FragColor = vec4(uColor.xyz *  vLightWeight , uColor.w);
+	}else{
+		gl_FragColor = uColor;
+	}
 }

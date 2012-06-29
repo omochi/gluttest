@@ -26,6 +26,8 @@ private:
 	virtual void render();
 
 	bool m_DebugLine;
+	bool m_DebugNormal;
+	bool m_Model;
 	bool m_Spin;
 
 	float dirLightRotY;

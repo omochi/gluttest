@@ -99,6 +99,7 @@
     <ClCompile Include="OMBase\Rect.cpp" />
     <ClCompile Include="OMGL\Camera.cpp" />
     <ClCompile Include="OMGL\Color.cpp" />
+    <ClCompile Include="OMGL\Debug\DebugLines.cpp" />
     <ClCompile Include="OMGL\GLBufferObject.cpp" />
     <ClCompile Include="OMGL\math.cpp" />
     <ClCompile Include="OMGL\OrthoCamera.cpp" />
@@ -146,6 +147,7 @@
     <ClInclude Include="OMGL\Camera.h" />
     <ClInclude Include="OMGL\Color.h" />
     <ClInclude Include="OMGL\common.h" />
+    <ClInclude Include="OMGL\Debug\DebugLines.h" />
     <ClInclude Include="OMGL\GLBufferObject.h" />
     <ClInclude Include="OMGL\math.h" />
     <ClInclude Include="OMGL\OMGL.h" />

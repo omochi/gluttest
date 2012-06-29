@@ -16,5 +16,6 @@
 #include "Prim/ArrowXYZ.h"
 #include "Prim/Cube.h"
 
+#include "Debug/DebugLines.h"
 
 #include "Shader/GLProgram.h"

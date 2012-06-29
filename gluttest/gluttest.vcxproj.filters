@@ -27,6 +27,9 @@
     <Filter Include="src\Shader">
       <UniqueIdentifier>{aed58a9f-67ad-40a7-b583-7b66447fb2a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="OMGL\Debug">
+      <UniqueIdentifier>{23f11bdd-e09c-49c7-ace5-24fb0c4f02a1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -133,6 +136,9 @@
     </ClCompile>
     <ClCompile Include="OMGL\SceneNodeResource.cpp">
       <Filter>OMGL</Filter>
+    </ClCompile>
+    <ClCompile Include="OMGL\Debug\DebugLines.cpp">
+      <Filter>OMGL\Debug</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -255,6 +261,9 @@
     </ClInclude>
     <ClInclude Include="OMGL\SceneNodeResource.h">
       <Filter>OMGL</Filter>
+    </ClInclude>
+    <ClInclude Include="OMGL\Debug\DebugLines.h">
+      <Filter>OMGL\Debug</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

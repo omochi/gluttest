@@ -15,6 +15,7 @@ public:
 		UNI_VIEWING,
 		UNI_PROJECTION,
 		UNI_COLOR,
+		UNI_NORMAL_ENABLED,
 		UNI_MODEL_NORMAL,
 		UNI_AMBIENT,
 		UNI_DIRECTION,
@@ -33,18 +34,25 @@ public:
 
 	void drawElementsP(GLenum mode,const omgl::GLBufferObject &vertexBuf,const omgl::GLBufferObject &indexBuf);
 	void drawElementsPN(GLenum mode,const omgl::GLBufferObject &vertexBuf,const omgl::GLBufferObject &indexBuf);
+
+	
+	std::vector<omgl::DebugLines> m_DebugLines;
+
+	void drawDebugLines(const omgl::DebugLines &line);
 protected:
 	virtual std::string getVshPath(){ return "shader/test1.vsh"; };
 	virtual std::string getFshPath(){ return "shader/test1.fsh"; };
 	virtual void onPreLink();
 	virtual void onPostLink();
 public:
-	bool m_DebugLine;
+	Test1Shader();
 
+	bool m_DebugLineEnabled;
+	bool m_DebugNormalEnabled;
+	bool m_ModelEnabled;
+	bool m_NormalEnabled;
 
 	virtual void renderScene(const omgl::Scene &scene);
-
-	
 
 	virtual bool addNode(omgl::SceneNode &n);
 	virtual void removeNode(omgl::SceneNode &n);
@@ -53,7 +61,8 @@ public:
 	virtual bool loadNodeImpl(omgl::GLTriangles &n);
 	virtual void releaseNodeImpl(omgl::GLTriangles &n);
 
+	omgl::DebugLines &addDebugLines(const omgl::DebugLines &line);
 
-	void drawLineDebug(const std::vector<vec3> &vecs,const omgl::Color &col);
+	void drawDebugLines(const std::vector<vec3> &vecs,const omgl::Color &col);
 };
 

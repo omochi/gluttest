@@ -25,27 +25,32 @@ namespace omgl{
 					glm::cos(lat),
 					glm::cos(lng) * glm::sin(lat)
 					);
-				
 				addVertex(0.5f*p).setNormal(p);
 			}
 		}
 
 		for(int ix = 0;ix <lngN;ix++){
-			int ixLeft = ix*yN;
+			int ixLeft = ix*yN ;
 			int ixRight = (ix+1)%lngN * yN;
-			for(int iy=0;iy<latN;iy++){
+			for(int iy=0;iy<latN ;iy++){
 				int iyUp = iy;
 				int iyDown = iy+1;
-				addIndex(
-					ixRight+iyUp,
-					ixLeft+iyUp,
-					ixLeft+iyDown
-					);
-				addIndex(
-					ixLeft+iyDown,
-					ixRight+iyDown,
-					ixRight+iyUp
-					);
+				if(iy>0){
+					addIndex(
+						ixRight+iyUp,
+						ixLeft+iyUp,
+						ixLeft+iyDown
+						);
+				}
+				
+				if(iy<latN-1){
+					addIndex(
+						ixLeft+iyDown,
+						ixRight+iyDown,
+						ixRight+iyUp
+						);
+				}
+				
 			}
 		}
 

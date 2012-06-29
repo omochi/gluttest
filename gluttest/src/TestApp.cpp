@@ -5,6 +5,7 @@
 void TestApp::onInitialize(){
 
 	uiArw.setScale(100,100,100);
+	
 	UIScene().addChild(&uiArw);
 
 	cam.m_Fovy = 60.f;
@@ -37,6 +38,8 @@ void TestApp::onInitialize(){
 	}
 
 	m_DebugLine = false;
+	m_DebugNormal = false;
+	m_Model = true;
 	m_Spin = true;
 
 	sh.addNode(scene());
@@ -69,12 +72,14 @@ void TestApp::onUpdate(float sec){
 
 	std::string str;
 
-	if(input().isOnKeyPressed(engine::KeyCodeP)){
-		str = glm::to_string(cam->getProjection());
-		printf("%s\n",str.c_str());
-	}
 	if(input().isOnKeyPressed(engine::KeyCodeL)){
 		m_DebugLine = !m_DebugLine;
+	}
+	if(input().isOnKeyPressed(engine::KeyCodeN)){
+		m_DebugNormal = !m_DebugNormal;
+	}
+	if(input().isOnKeyPressed(engine::KeyCodeM)){
+		m_Model = !m_Model;
 	}
 	if(input().isOnKeyPressed(engine::KeyCodeR)){
 		m_Spin = !m_Spin;
@@ -159,8 +164,10 @@ void TestApp::render(){
 		cam->m_Height = viewport().height();
 		
 
-		sh.m_DebugLine = m_DebugLine;
-
+		sh.m_DebugLineEnabled = m_DebugLine;
+		sh.m_DebugNormalEnabled = m_DebugNormal;
+		sh.m_ModelEnabled = m_Model;
+		sh.m_NormalEnabled = true;
 		sh.renderScene(scene());
 	}
 	
@@ -169,9 +176,11 @@ void TestApp::render(){
 	m_UICamera.m_Width = viewport().width();
 	m_UICamera.m_Height = viewport().height();
 
-	sh.m_DebugLine=false;
-
-	//sh.renderScene(UIScene());
+	sh.m_DebugLineEnabled=false;
+	sh.m_DebugNormalEnabled = false;
+	sh.m_ModelEnabled = true;
+	sh.m_NormalEnabled = false;
+	sh.renderScene(UIScene());
 
 	glutSwapBuffers();
 	

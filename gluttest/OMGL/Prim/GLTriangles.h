@@ -18,6 +18,8 @@ namespace omgl{
 		GLBufferObject m_VertexBuf;
 		GLBufferObject m_IndexBuf;
 
+		bool m_NormalEnabled;
+
 		Vertex &addVertex();
 		Vertex &addVertex(const Vertex &v);
 
@@ -35,9 +37,10 @@ namespace omgl{
 		void setColor(const Color &c);
 
 		GLTriangles():SceneNode(),m_BeginMode(GL_TRIANGLES),
-			m_Color(1.f,1.f,1.f,1.f){}
+			m_Color(1.f,1.f,1.f,1.f),m_NormalEnabled(true){}
 		
 		SCENE_NODE_IMPL_VISIT_RENDERER();
+
 
 		/*
 	protected:

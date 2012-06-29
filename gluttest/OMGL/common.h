@@ -1,5 +1,5 @@
-#pragma once
-//“à•”‹¤’Ê
+ï»¿#pragma once
+//å†…éƒ¨å…±é€š
 #include <OMBase/OMBase.h>
 
 #define ASSERT_GL() {\

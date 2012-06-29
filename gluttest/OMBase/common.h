@@ -1,6 +1,6 @@
-#pragma once
+﻿#pragma once
 
-//�����̋��ʃw�b�_
+//内部の共通ヘッダ
 
 #ifdef _WIN32
 #include <Windows.h>

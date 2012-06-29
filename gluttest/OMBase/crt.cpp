@@ -1,4 +1,4 @@
-#include "crt.h"
+﻿#include "crt.h"
 namespace base{
 	FILE *fopen(const char *path,const char *mode){
 		FILE *fp = NULL;

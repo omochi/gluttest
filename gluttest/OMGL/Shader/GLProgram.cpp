@@ -1,4 +1,4 @@
-#include "GLProgram.h"
+﻿#include "GLProgram.h"
 
 namespace omgl{
 	bool GLProgram::create(){

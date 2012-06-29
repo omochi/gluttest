@@ -1,4 +1,4 @@
-#include "GLShader.h"
+﻿#include "GLShader.h"
 
 namespace omgl{
 	bool GLShader::create(GLenum type){

@@ -1,6 +1,6 @@
-#pragma once
+ï»¿#pragma once
 
-//ŠO‚©‚çŒÄ‚Ô‚Ì‚Í‚±‚±
+//å¤–ã‹ã‚‰å‘¼ã¶ã®ã¯ã“ã“
 
 #include "common.h"
 #include "type.h"

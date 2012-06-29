@@ -1,4 +1,4 @@
-#include "GLBufferObject.h"
+﻿#include "GLBufferObject.h"
 
 namespace omgl{
 	bool GLBufferObject::create(GLenum type){

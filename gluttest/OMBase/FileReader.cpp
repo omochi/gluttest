@@ -1,4 +1,4 @@
-#include "FileReader.h"
+﻿#include "FileReader.h"
 
 namespace base{
 	bool FileReader::read(std::vector<char> &dst,const std::string &path)const{

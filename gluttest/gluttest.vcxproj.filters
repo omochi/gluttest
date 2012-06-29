@@ -122,10 +122,16 @@
     <ClCompile Include="src\Shader\Test1.cpp">
       <Filter>src\Shader</Filter>
     </ClCompile>
-    <ClCompile Include="OMGL\DefaultRenderer.cpp">
+    <ClCompile Include="OMGL\GLBufferObject.cpp">
       <Filter>OMGL</Filter>
     </ClCompile>
-    <ClCompile Include="OMGL\GLBufferObject.cpp">
+    <ClCompile Include="OMGL\Prim\Vertex.cpp">
+      <Filter>OMGL\Prim</Filter>
+    </ClCompile>
+    <ClCompile Include="OMGL\SceneNodeIdPool.cpp">
+      <Filter>OMGL</Filter>
+    </ClCompile>
+    <ClCompile Include="OMGL\SceneNodeResource.cpp">
       <Filter>OMGL</Filter>
     </ClCompile>
   </ItemGroup>
@@ -238,10 +244,16 @@
     <ClInclude Include="src\Shader\Test1.h">
       <Filter>src\Shader</Filter>
     </ClInclude>
-    <ClInclude Include="OMGL\DefaultRenderer.h">
+    <ClInclude Include="OMGL\GLBufferObject.h">
       <Filter>OMGL</Filter>
     </ClInclude>
-    <ClInclude Include="OMGL\GLBufferObject.h">
+    <ClInclude Include="OMGL\Prim\Vertex.h">
+      <Filter>OMGL\Prim</Filter>
+    </ClInclude>
+    <ClInclude Include="OMGL\SceneNodeIdPool.h">
+      <Filter>OMGL</Filter>
+    </ClInclude>
+    <ClInclude Include="OMGL\SceneNodeResource.h">
       <Filter>OMGL</Filter>
     </ClInclude>
   </ItemGroup>

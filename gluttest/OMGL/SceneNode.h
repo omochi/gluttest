@@ -1,7 +1,14 @@
 ﻿#pragma once
-
+#include "common.h"
 #include "Transform.h"
 #include "SceneRenderer.h"
+
+#define SCENE_NODE_IMPL_VISIT_RENDERER() \
+	virtual void visitRenderer(omgl::SceneRenderer &r)const{ r.renderNodeImpl(*this); } \
+	virtual bool visitLoadNode(omgl::SceneRenderer &r){ return r.loadNodeImpl(*this); }\
+	virtual void visitReleaseNode(omgl::SceneRenderer &r){ r.releaseNodeImpl(*this); }\
+
+
 namespace omgl{
 	class SceneNode;
 	
@@ -11,20 +18,18 @@ namespace omgl{
 		SceneNode *m_Parent;
 		SceneNodeList m_Children;
 
-		mat m_WorldTransform;
-
-		bool m_Loaded;
-		bool m_LoadReq;
+		mat m_WorldTransform;	
 	public:
-		SceneNode():Transform(){
-			m_Parent=NULL;
-			m_Loaded = false;
-			m_LoadReq = true;
-			m_Children=SceneNodeList();
+		SceneNode():Transform(),m_Parent(NULL){
+			m_Children = SceneNodeList();
 		};
+
 		const SceneNodeList &getChildren() const;
 
 		void addChild(SceneNode *child);
+
+		SceneNodeList::iterator removeChild(SceneNode *child);
+
 		void removeFromParent();
 		SceneNode *getParent() const;
 
@@ -32,21 +37,7 @@ namespace omgl{
 		const mat &getWorldTransform() const;
 		void setWorldTransform(const mat &m);
 
-		//絵のでるノードは以下を記述
-		//SCENE_RENDERER_IMPL_VISIT_RENDERER();
-		virtual void visitRenderer(omgl::SceneRenderer *r)const{  }
-
-		bool isLoaded() const;
-		bool isLoadRequesting() const;
-
-		//読み込み
-		bool load();
-		//解放
-		void release();
-	protected:
-		virtual bool loadImpl(){ return true; }
-		virtual void releaseImpl(){}
-
+		SCENE_NODE_IMPL_VISIT_RENDERER();
 
 	};
 }

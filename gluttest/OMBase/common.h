@@ -11,6 +11,10 @@
 #include <stdarg.h>
 #include <string>
 #include <vector>
+#include <list>
+#include <set>
+#include <map>
+#include <algorithm>
 
 
 #include <gl/glew.h>

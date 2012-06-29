@@ -27,15 +27,19 @@ void TestApp::onInitialize(){
 	//scene().addChild(&cone);
 
 	sph.setPos(0,2,0);
-	//scene().addChild(&sph);
+	scene().addChild(&sph);
 
 	cir.setPos(2,2,0);
 	//scene().addChild(&cir);
 
 	if(!sh.load()){
-		FAIL("");
+		FAIL("shader load");
 	}
 
+	m_DebugLine = false;
+
+	sh.addNode(scene());
+	sh.addNode(UIScene());
 }
 
 void TestApp::onFinalize(){
@@ -57,10 +61,7 @@ void TestApp::onUpdate(float sec){
 		printf("%s\n",str.c_str());
 	}
 	if(input().isOnKeyPressed(engine::KeyCodeL)){
-		omgl::DefaultRenderer *r = dynamic_cast<omgl::DefaultRenderer *>(&renderer()); 
-		if(r){
-			r->m_DispTriangle = ! r->m_DispTriangle;
-		}
+		m_DebugLine = !m_DebugLine;
 	}
 
 
@@ -126,19 +127,20 @@ void TestApp::render(){
 		cam->m_Width = viewport().width();
 		cam->m_Height = viewport().height();
 		
-		//dynamic_cast<omgl::DefaultRenderer &>(renderer()).m_DispTriangle=true;
-		//renderer().renderScene(&scene());
 
-		sh.renderScene(&scene());
+		sh.m_DebugLine = m_DebugLine;
+
+		sh.renderScene(scene());
 	}
 	
 	
 	glClear(GL_DEPTH_BUFFER_BIT);
 	m_UICamera.m_Width = viewport().width();
 	m_UICamera.m_Height = viewport().height();
-	//m_UIRenderer.renderScene(&m_UIScene);
-	
-	sh.renderScene(&m_UIScene);
+
+	sh.m_DebugLine=false;
+
+	sh.renderScene(UIScene());
 
 	glutSwapBuffers();
 	

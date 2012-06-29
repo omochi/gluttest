@@ -12,15 +12,19 @@ namespace engine{
 	Input & Engine::input(){
 		return m_Input;
 	}
+	/*
 	omgl::SceneRenderer & Engine::renderer(){
 		return m_Renderer;
 	}
+	*/
 	omgl::Scene & Engine::UIScene(){
 		return m_UIScene;
 	}
+	/*
 	omgl::SceneRenderer & Engine::UIRenderer(){
 		return m_UIRenderer;
 	}
+	*/
 	Rect Engine::viewport() const{
 		return m_Viewport;
 	}
@@ -108,6 +112,7 @@ namespace engine{
 		
 	}
 	void Engine::render(){
+		/*
 		glViewport(m_Viewport.left(),m_Viewport.top(),
 			m_Viewport.width(),m_Viewport.height());
 
@@ -127,5 +132,6 @@ namespace engine{
 		m_UIRenderer.renderScene(&m_UIScene);
 
 		glutSwapBuffers();
+		*/
 	}
 }

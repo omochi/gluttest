@@ -6,26 +6,23 @@ namespace omgl{
 	void GLTriangles::setColor(const Color &c){
 		m_Color = c;
 	}
-
-	bool GLTriangles::loadImpl(){
-		if(!m_VertexBuf.load(GL_ARRAY_BUFFER,m_Vertices,GL_STATIC_DRAW)){
-			release();
-			return false;
-		}
-		if(!m_IndexBuf.load(GL_ELEMENT_ARRAY_BUFFER,m_Indices,GL_STATIC_DRAW)){
-			release();
-			return false;
-		}
-
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
-		ASSERT_GL();
-		glBindBuffer(GL_ARRAY_BUFFER,0);
-		ASSERT_GL();
-
-		return true;
+	Vertex &GLTriangles::addVertex(const Vertex &v){
+		m_Vertices.push_back(v);
+		return m_Vertices.back();
 	}
-	void GLTriangles::releaseImpl(){
-		m_VertexBuf.release();
-		m_IndexBuf.release();
+	void GLTriangles::addIndex(int i){
+		m_Indices.push_back(i);
+	}
+	void GLTriangles::addIndex(int i0,int i1,int i2){
+		m_Indices.push_back(i0);
+		m_Indices.push_back(i1);
+		m_Indices.push_back(i2);
+	}
+
+	int GLTriangles::getIndexByElementIndex(int i) const{
+		return m_Indices[i];
+	}
+	const Vertex &GLTriangles::getVertexByElementIndex(int i) const{
+		return m_Vertices[getIndexByElementIndex(i)];
 	}
 }

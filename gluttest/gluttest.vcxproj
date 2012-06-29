@@ -99,7 +99,6 @@
     <ClCompile Include="OMBase\Rect.cpp" />
     <ClCompile Include="OMGL\Camera.cpp" />
     <ClCompile Include="OMGL\Color.cpp" />
-    <ClCompile Include="OMGL\DefaultRenderer.cpp" />
     <ClCompile Include="OMGL\GLBufferObject.cpp" />
     <ClCompile Include="OMGL\math.cpp" />
     <ClCompile Include="OMGL\OrthoCamera.cpp" />
@@ -113,8 +112,11 @@
     <ClCompile Include="OMGL\Prim\GLTriangles.cpp" />
     <ClCompile Include="OMGL\Prim\Sphere.cpp" />
     <ClCompile Include="OMGL\Prim\Square.cpp" />
+    <ClCompile Include="OMGL\Prim\Vertex.cpp" />
     <ClCompile Include="OMGL\Scene.cpp" />
     <ClCompile Include="OMGL\SceneNode.cpp" />
+    <ClCompile Include="OMGL\SceneNodeIdPool.cpp" />
+    <ClCompile Include="OMGL\SceneNodeResource.cpp" />
     <ClCompile Include="OMGL\SceneRenderer.cpp" />
     <ClCompile Include="OMGL\Shader\GLProgram.cpp" />
     <ClCompile Include="OMGL\Shader\GLShader.cpp" />
@@ -144,7 +146,6 @@
     <ClInclude Include="OMGL\Camera.h" />
     <ClInclude Include="OMGL\Color.h" />
     <ClInclude Include="OMGL\common.h" />
-    <ClInclude Include="OMGL\DefaultRenderer.h" />
     <ClInclude Include="OMGL\GLBufferObject.h" />
     <ClInclude Include="OMGL\math.h" />
     <ClInclude Include="OMGL\OMGL.h" />
@@ -159,6 +160,9 @@
     <ClInclude Include="OMGL\ParseCamera.h" />
     <ClInclude Include="OMGL\Prim\Sphere.h" />
     <ClInclude Include="OMGL\Prim\Square.h" />
+    <ClInclude Include="OMGL\Prim\Vertex.h" />
+    <ClInclude Include="OMGL\SceneNodeIdPool.h" />
+    <ClInclude Include="OMGL\SceneNodeResource.h" />
     <ClInclude Include="OMGL\Shader\GLProgram.h" />
     <ClInclude Include="OMGL\Shader\GLShader.h" />
     <ClInclude Include="OMGL\Transform.h" />

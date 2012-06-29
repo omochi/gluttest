@@ -4,15 +4,25 @@
 # define lowp
 #endif
 
+attribute vec3 aPos;
+attribute vec3 aNormal;
 
-attribute vec3 pos;
+uniform mat4 uModel;
+uniform mat4 uViewing;
+uniform mat4 uProjection;
 
-uniform mat4 model;
-uniform mat4 viewing;
-uniform mat4 projection;
+uniform mat3 uNormalMatrix;
 
-uniform vec4 color;
+uniform vec3 uAmbient;
+uniform vec3 uDirection;
+uniform vec3 uDirectionColor;
+
+varying vec3 vLightWeight;
 
 void main(){
-	gl_Position = projection * viewing * model * vec4(pos,1.0);
+	gl_Position = uProjection * uViewing * uModel * vec4(aPos,1.0);
+	
+	//vec4 normal = uNormalMatrix * vec4(aNormal,1.0);
+	//float dirWeight = max(0.0,dot(normal,uDirection));
+	//vLightWeight = uAmbient + uDirectionColor * dirWeight;
 }

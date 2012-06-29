@@ -25,8 +25,11 @@ private:
 
 	virtual void render();
 
+	bool m_DebugLine;
+
 protected:
 	virtual void onInitialize();
 	virtual void onFinalize();
 	virtual void onUpdate(float sec);
+public:
 };

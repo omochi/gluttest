@@ -1,19 +1,25 @@
 ﻿#include "SceneNode.h"
-#include <algorithm>
-#include "SceneRenderer.h"
+
 namespace omgl{
 
+	
 	void SceneNode::addChild(SceneNode *child){
 		ASSERT(m_Parent==NULL);//循環防止
 		m_Children.push_back(child);
 		child->m_Parent = this;
 	}
-	void SceneNode::removeFromParent(){
-		if(m_Parent!=NULL){
-			SceneNodeList::iterator it = std::remove(m_Parent->m_Children.begin(),m_Parent->m_Children.end(),this);
-			m_Parent->m_Children.erase(it,m_Parent->m_Children.end());
+
+	SceneNodeList::iterator SceneNode::removeChild(SceneNode *child){
+		ASSERT(child!=NULL);
+		SceneNodeList::iterator it = std::remove(m_Children.begin(),m_Children.end(),child);
+		if(it!=m_Children.end()){
+			child->m_Parent = NULL;
 		}
-		m_Parent=NULL;
+		return m_Children.erase(it,m_Children.end());
+	}
+
+	void SceneNode::removeFromParent(){
+		if(m_Parent!=NULL)m_Parent->removeChild(this);
 	}
 
 	const SceneNodeList &SceneNode::getChildren() const{
@@ -31,20 +37,5 @@ namespace omgl{
 		m_WorldTransform = m;
 	}
 
-	bool SceneNode::isLoadRequesting() const{
-		return m_LoadReq;
-	}
-	bool SceneNode::isLoaded() const { return m_Loaded; }
-
-	bool SceneNode::load(){
-		bool ok = loadImpl();
-		m_Loaded = ok;
-		m_LoadReq = false;
-		return ok;
-	}
-	void SceneNode::release(){
-		releaseImpl();
-		m_Loaded=false;
-	}
 
 }

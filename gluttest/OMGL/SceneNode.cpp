@@ -37,5 +37,9 @@ namespace omgl{
 		m_WorldTransform = m;
 	}
 
+	mat3 SceneNode::getWorldNormalMatrix() const{
+		return glm::inverseTranspose(glm::mat3(getWorldTransform()));
+	}
+
 
 }

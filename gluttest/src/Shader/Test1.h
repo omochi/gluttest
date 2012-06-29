@@ -5,7 +5,8 @@
 class Test1Shader : public omgl::GLProgram , omgl::SceneRenderer{
 public:
 	enum{
-		ATTR_POS = 0,
+		ATTR_POS,
+		ATTR_NORMAL,
 		ATTR_COUNT
 	};
 	//GLint attrs[ATTR_COUNT];
@@ -14,6 +15,10 @@ public:
 		UNI_VIEWING,
 		UNI_PROJECTION,
 		UNI_COLOR,
+		UNI_MODEL_NORMAL,
+		UNI_AMBIENT,
+		UNI_DIRECTION,
+		UNI_DIRECTION_COLOR,
 		UNI_COUNT
 	};
 	GLint unis[UNI_COUNT];
@@ -22,20 +27,17 @@ public:
 	mat m_Viewing;
 	mat m_Projection;
 
-	void drawElementsP(GLenum mode,const omgl::GLBufferObject &vertexBuf,const omgl::GLBufferObject &indexBuf);
+	omgl::Color m_Ambient;
+	vec3 m_Direction;
+	omgl::Color m_DirectionColor;
 
+	void drawElementsP(GLenum mode,const omgl::GLBufferObject &vertexBuf,const omgl::GLBufferObject &indexBuf);
+	void drawElementsPN(GLenum mode,const omgl::GLBufferObject &vertexBuf,const omgl::GLBufferObject &indexBuf);
 protected:
 	virtual std::string getVshPath(){ return "shader/test1.vsh"; };
 	virtual std::string getFshPath(){ return "shader/test1.fsh"; };
-	virtual void onPreLink(){
-		bindAttrib(ATTR_POS,"aPos");
-	}
-	virtual void onPostLink(){
-		unis[UNI_MODEL] = getUniform("uModel");
-		unis[UNI_VIEWING] = getUniform("uViewing");
-		unis[UNI_PROJECTION] = getUniform("uProjection");
-		unis[UNI_COLOR] = getUniform("uColor");
-	}
+	virtual void onPreLink();
+	virtual void onPostLink();
 public:
 	bool m_DebugLine;
 

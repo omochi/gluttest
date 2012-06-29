@@ -9,6 +9,15 @@ namespace omgl{
 		setPos(vec3(x,y,z));
 		return *this;
 	}
+	Vertex &Vertex::setNormal(vec3 n){
+		normal = n;
+		return *this;
+	}
+	Vertex &Vertex::setNormal(float x,float y,float z){
+		setNormal(vec3(x,y,z));
+		return *this;
+	}
+
 	void VertexListToBufP(std::vector<float> &dst,const VertexList &list){
 		dst.clear();
 		dst.reserve(list.size()*3);
@@ -18,7 +27,7 @@ namespace omgl{
 			dst.push_back((*i).pos.z);
 		}
 	}
-	void VertexListtoBufPN(std::vector<float> &dst,const VertexList &list){
+	void VertexListToBufPN(std::vector<float> &dst,const VertexList &list){
 		dst.clear();
 		dst.reserve(list.size()*6);
 		for(VertexList::const_iterator i = list.begin();i!=list.end();i++){

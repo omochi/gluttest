@@ -11,7 +11,7 @@ uniform mat4 uModel;
 uniform mat4 uViewing;
 uniform mat4 uProjection;
 
-uniform mat3 uNormalMatrix;
+uniform mat3 uModelNormal;
 
 uniform vec3 uAmbient;
 uniform vec3 uDirection;
@@ -22,7 +22,7 @@ varying vec3 vLightWeight;
 void main(){
 	gl_Position = uProjection * uViewing * uModel * vec4(aPos,1.0);
 	
-	//vec4 normal = uNormalMatrix * vec4(aNormal,1.0);
-	//float dirWeight = max(0.0,dot(normal,uDirection));
-	//vLightWeight = uAmbient + uDirectionColor * dirWeight;
+	vec3 normal = normalize(uModelNormal * aNormal);
+	float dirWeight = max(0.0,dot(normal,- normalize(uDirection) ));
+	vLightWeight = uAmbient + uDirectionColor * dirWeight;
 }

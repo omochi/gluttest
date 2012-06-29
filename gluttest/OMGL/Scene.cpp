@@ -9,14 +9,8 @@ namespace omgl{
 		if(p){
 			//親が無い(Sceneルート)は変換しない
 			node->setWorldTransform(glm::mul(p->getWorldTransform(),transform));
-		}
 
-		/*
-		//ロードリクエスト
-		if(node->isLoadRequesting()){
-			if(!node->load())FAIL("");
 		}
-		*/
 
 		//子供のノードへ進む
 		for(SceneNodeList::const_iterator it = node->getChildren().begin();it!=node->getChildren().end();it++){
@@ -38,6 +32,7 @@ namespace omgl{
 
 	void Scene::update(){
 		setWorldTransform(mat(1.f));
+
 		updateNode(this);
 	}
 

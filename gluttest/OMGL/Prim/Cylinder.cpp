@@ -22,18 +22,24 @@ namespace omgl{
 		m_Vertices.clear();
 		m_Indices.clear();
 
-		Vertex &v = Vertex();
-
 		float angle = M_2PI / static_cast<float>(n);
 		for(int i=0;i<n;i++){
-			v= addVertex(Vertex().setPos(
+			addVertex(
 				0.5f * glm::cos(angle*i),
 				0.5f * glm::sin(angle*i),
-				-0.5f));
-			v= addVertex(Vertex().setPos(
+				-0.5f).
+			setNormal(
+				glm::cos(angle*i),
+				glm::sin(angle*i),
+				0);
+			addVertex(
 				0.5f * glm::cos(angle*i),
 				0.5f * glm::sin(angle*i),
-				+0.5f));
+				+0.5f).
+			setNormal(
+				glm::cos(angle*i),
+				glm::sin(angle*i),
+				0);
 		}
 
 		for(int i=0;i<n;i++){

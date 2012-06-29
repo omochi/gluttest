@@ -12,10 +12,12 @@ namespace omgl{
 		Vertex(vec3 p):pos(p){}
 		Vertex &setPos(vec3 p);
 		Vertex &setPos(float x,float y,float z);
+		Vertex &setNormal(vec3 n);
+		Vertex &setNormal(float x,float y,float z);
 	};
 
 	typedef std::vector<Vertex> VertexList;
 
 	void VertexListToBufP(std::vector<float> &dst,const VertexList &list);
-	void VertexListtoBufPN(std::vector<float> &dst,const VertexList &list);
+	void VertexListToBufPN(std::vector<float> &dst,const VertexList &list);
 }

@@ -26,6 +26,9 @@ private:
 	virtual void render();
 
 	bool m_DebugLine;
+	bool m_Spin;
+
+	float dirLightRotY;
 
 protected:
 	virtual void onInitialize();

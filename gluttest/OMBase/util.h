@@ -26,6 +26,8 @@
 	p=NULL;\
 }
 
+#define OFFSET(o) ((char *)NULL+(o))
+
 template<class T>
 T cycleClamp(T x,const T &min,const T &max){
 	while(x<min)x+=(max-min);

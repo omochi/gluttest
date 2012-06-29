@@ -44,32 +44,35 @@ namespace omgl{
 		GLint len;
 		if(m_Id!=0){
 			glGetShaderiv(m_Id,GL_INFO_LOG_LENGTH,&len);
+			len=256;
 			if(len>0){
 				std::string buf;
 				buf.resize(len);
 				glGetProgramInfoLog(m_Id,len,&len,&buf[0]);
 				log.append(buf);
+			}else{
+				fprintf(stderr,"GL_INFO_LOG_LENGTH = %d\n",len);
+
 			}
 		}
 		return log;
 	}
 
 	void GLProgram::bindAttrib(GLuint index,const GLchar *name){
-		if(m_Id!=0){
-			glBindAttribLocation(m_Id,index,name);
-			ASSERT_GL();
-		}
+		if(m_Id==0)FAIL("bindAttrib");
+		glBindAttribLocation(m_Id,index,name);
+		ASSERT_GL();
 	}
 	GLint GLProgram::getUniform(const GLchar *name){
-		GLint ret = -1;
-		if(m_Id!=0){
-			ret = glGetUniformLocation(m_Id,name);
-			ASSERT_GL();
-		}
+		GLint ret;
+		if(m_Id==0)FAIL("getUniform");
+		ret = glGetUniformLocation(m_Id,name);
+		ASSERT_GL();
 		return ret;
 	}
 
 	void GLProgram::use(){
+		if(m_Id==0)FAIL("use");
 		glUseProgram(m_Id);
 	}
 

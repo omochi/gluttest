@@ -6,4 +6,5 @@ namespace omgl{
 		mat m = glm::inverse(getWorldTransform());
 		return m;
 	}
+
 }

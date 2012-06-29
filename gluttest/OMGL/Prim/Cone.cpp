@@ -4,6 +4,8 @@ namespace omgl{
 
 	Cone::Cone():GLTriangles(){
 
+		m_Back.setRotEular(0,M_PI,0);
+
 		addChild(&m_Back);
 		setDivNum(16);
 	}
@@ -15,21 +17,25 @@ namespace omgl{
 		m_Vertices.clear();
 		m_Indices.clear();
 
-		Vertex &v = Vertex();
-		
-		v=addVertex(Vertex().setPos(0.f,0.f,1.f));
-
 		float angle = M_2PI / static_cast<float>(n);
 		for(int i=0;i<n;i++){
-			v = addVertex(Vertex().setPos(
+			vec3 normal(glm::cos(angle*i),glm::sin(angle*i),0.5f);
+
+			//normal = glm::normalize(normal);
+
+			addVertex(0.f,0.f,1.f).setNormal(normal);
+			addVertex(
 				0.5f * glm::cos(angle*i),
 				0.5f * glm::sin(angle*i),
-				0.f));
+				0.f).setNormal(normal);
 		}
 
 		for(int i=0;i<n;i++){
-			addIndex(0,(i+1)%n + 1,(i+0)%n + 1);
+			addIndex(2*i,2*i+1,2*((i+1)%n)+1);
 		}
+
+		
+
 	}
 
 	void Cone::setColorAll(const Color &c){

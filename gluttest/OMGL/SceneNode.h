@@ -19,6 +19,7 @@ namespace omgl{
 		SceneNodeList m_Children;
 
 		mat m_WorldTransform;	
+		mat3 m_WorldNormalMatrix;
 	public:
 		SceneNode():Transform(),m_Parent(NULL){
 			m_Children = SceneNodeList();
@@ -36,6 +37,9 @@ namespace omgl{
 		//ツリー更新
 		const mat &getWorldTransform() const;
 		void setWorldTransform(const mat &m);
+
+		mat3 getWorldNormalMatrix() const;
+
 
 		SCENE_NODE_IMPL_VISIT_RENDERER();
 

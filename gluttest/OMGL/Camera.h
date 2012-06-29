@@ -23,5 +23,6 @@ namespace omgl{
 		virtual mat getProjection() const = 0;
 		mat getViewing() const;
 
+
 	};
 }

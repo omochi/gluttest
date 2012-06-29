@@ -4,31 +4,35 @@
 
 namespace omgl{
 
-	class Color{
+	/*
+	class Color : public glm::vec4{
 	public:
-		vec4 v;
 
-		Color():v(1.f,1.f,1.f,1.f){}
+		Color(float r,float g,float b,float a):vec4(r,g,b,a){}
+		Color(float r,float g,float b):vec4(r,g,b,1.f){}
+		Color():vec4(1.f,1.f,1.f,1.f){}
 		
-		explicit Color(float r,float g,float b,float a):v(r,g,b,a){}
-		explicit Color(float r,float g,float b):v(r,g,b,1.f){}
-		
-		//適当な色が欲しい
+		Color(const Color &s):vec4(s.x,s.y,s.z,s.w){}
+
 		explicit Color(int idx);
 
-		const GLfloat *ptr() const;
-	};
 
-	const Color ColorRed(1,0,0);
-	const Color ColorOrange(1,0.5f,0);
-	const Color ColorYellow(1,1,0);
-	const Color ColorGreen(0,1,0);
-	const Color ColorCyan(0,1,1);
-	const Color ColorBlue(0,0,1);
-	const Color ColorPurple(1,0,1);
-	const Color ColorWhite(1,1,1);
-	const Color ColorGray(0.5f,0.5f,0.5f);
-	const Color ColorBlack(0,0,0);
+
+	};
+	*/
+
+	typedef glm::vec4 Color;
+
+	const Color ColorRed		(1.f,0.f,0.f,1.f);
+	const Color ColorOrange	(1.f,0.5f,0.f,1.f);
+	const Color ColorYellow	(1.f,1.f,0.f,1.f);
+	const Color ColorGreen	(0.f,1.f,0.f,1.f);
+	const Color ColorCyan	(0.f,1.f,1.f,1.f);
+	const Color ColorBlue	(0.f,0.f,1.f,1.f);
+	const Color ColorPurple	(1.f,0.f,1.f,1.f);
+	const Color ColorWhite	(1.f,1.f,1.f,1.f);
+	const Color ColorGray	(0.5f,0.5f,0.5f,1.f);
+	const Color ColorBlack	(0.f,0.f,0.f,1.f);
 
 	const Color ColorList[]={
 		ColorRed,		
@@ -42,5 +46,6 @@ namespace omgl{
 		ColorGray,	
 		ColorBlack	
 	};
-	const int ColorListLen = ARRAY_SIZE(ColorList);
+
+	Color getColor(int idx);
 }

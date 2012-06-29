@@ -2,12 +2,9 @@
 
 namespace omgl{
 
-	Color::Color(int idx){
-		Color src = ColorList[idx%ARRAY_SIZE(omgl::ColorList)];
-		*this = src;
+
+	Color getColor(int idx){
+		return ColorList[idx%ARRAY_SIZE(omgl::ColorList)];
 	}
 
-	const GLfloat *Color::ptr() const{
-		return glm::value_ptr(v);
-	}
 }

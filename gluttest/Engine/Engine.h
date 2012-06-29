@@ -22,18 +22,18 @@ namespace engine{
 		ActorHandleList m_ActorHandleList;
 
 		omgl::Scene m_Scene;
-//		omgl::DefaultRenderer m_Renderer;
+
 
 	protected:
 		omgl::Scene m_UIScene;
-//		omgl::DefaultRenderer m_UIRenderer;
+
 		omgl::OrthoCamera m_UICamera;
 	public:
 		omgl::Scene & scene() ;
 		Input & input();
-		//omgl::SceneRenderer & renderer();
+
 		omgl::Scene & UIScene();
-		//omgl::SceneRenderer & UIRenderer();
+
 		Rect viewport() const;
 
 		void setViewport(Rect v);

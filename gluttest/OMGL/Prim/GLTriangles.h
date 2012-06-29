@@ -18,7 +18,12 @@ namespace omgl{
 		GLBufferObject m_VertexBuf;
 		GLBufferObject m_IndexBuf;
 
+		Vertex &addVertex();
 		Vertex &addVertex(const Vertex &v);
+
+		//pos
+		Vertex &addVertex(const vec3 &p);
+		Vertex &addVertex(float x,float y,float z);
 
 		void addIndex(int i);
 		void addIndex(int i0,int i1,int i2);
@@ -29,7 +34,8 @@ namespace omgl{
 		const Color &getColor() const;
 		void setColor(const Color &c);
 
-		GLTriangles():SceneNode(),m_BeginMode(GL_TRIANGLES){}
+		GLTriangles():SceneNode(),m_BeginMode(GL_TRIANGLES),
+			m_Color(1.f,1.f,1.f,1.f){}
 		
 		SCENE_NODE_IMPL_VISIT_RENDERER();
 

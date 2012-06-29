@@ -21,10 +21,10 @@ void TestApp::onInitialize(){
 	scene().addChild(&cube);
 
 	cyl.setPos(2,0,0);
-	//scene().addChild(&cyl);
+	scene().addChild(&cyl);
 
 	cone.setPos(-2,0,0);
-	//scene().addChild(&cone);
+	scene().addChild(&cone);
 
 	sph.setPos(0,2,0);
 	scene().addChild(&sph);
@@ -37,9 +37,12 @@ void TestApp::onInitialize(){
 	}
 
 	m_DebugLine = false;
+	m_Spin = true;
 
 	sh.addNode(scene());
 	sh.addNode(UIScene());
+
+	dirLightRotY = 0;
 }
 
 void TestApp::onFinalize(){
@@ -48,9 +51,19 @@ void TestApp::onFinalize(){
 
 
 void TestApp::onUpdate(float sec){
-	quat q = cube.getRotQuat();
-	quat spin = glm::rotate(q,180.f*sec,vec3(0,1,0));
-	cube.setRotQuat(spin);
+
+	if(m_Spin){
+
+		quat q = cube.getRotQuat();
+		quat spin = glm::rotate(q,180.f*sec,vec3(0,1,0));
+		cube.setRotQuat(spin);
+
+		cyl.setRotQuat(glm::rotate(cyl.getRotQuat(),180.f*sec,vec3(0,1,0)));
+		cone.setRotQuat(glm::rotate(cone.getRotQuat(),180.f*sec,vec3(0,1,0)));
+
+		sph.setRotQuat(glm::rotate(sph.getRotQuat(),180.f*sec,vec3(0,1,0)));
+
+	}
 
 	omgl::Camera *cam = scene().getMainCamera();
 
@@ -62,6 +75,9 @@ void TestApp::onUpdate(float sec){
 	}
 	if(input().isOnKeyPressed(engine::KeyCodeL)){
 		m_DebugLine = !m_DebugLine;
+	}
+	if(input().isOnKeyPressed(engine::KeyCodeR)){
+		m_Spin = !m_Spin;
 	}
 
 
@@ -112,6 +128,21 @@ void TestApp::onUpdate(float sec){
 	float uy = - (viewport().top() +120.f  - viewport().center().y);
 	uiArw.setPos(ux,uy,0);
 
+	sh.m_Ambient = omgl::Color(0.2f,0.2f,0.2f,1.f);
+	
+	sh.m_DirectionColor = omgl::Color(0.7f,0.7f,0.7f,1.f);
+
+
+	dirLightRotY += M_2PI * sec;
+
+	vec3 dirLight;
+	
+//	dirLight= vec3(glm::cos(dirLightRotY),-2.f + glm::sin(dirLightRotY/3.f),glm::sin(dirLightRotY));
+
+	dirLight = vec3(1.f,-2.f,-1.f);
+
+	sh.m_Direction = dirLight;
+
 }
 
 void TestApp::render(){
@@ -140,7 +171,7 @@ void TestApp::render(){
 
 	sh.m_DebugLine=false;
 
-	sh.renderScene(UIScene());
+	//sh.renderScene(UIScene());
 
 	glutSwapBuffers();
 	

@@ -5,4 +5,6 @@
 
 # 画像
 
-![デバッグ表示](https://github.com/omochi/gluttest/blob/master/etc/ss/debug-wire-normal.png)
+- ![平行光源](https://raw.github.com/omochi/gluttest/master/etc/ss/directional-light.png)
+- ![デバッグ表示](https://raw.github.com/omochi/gluttest/master/etc/ss/debug-wire-normal.png)
+- ![法線カラー](https://raw.github.com/omochi/gluttest/master/etc/ss/normal-coloring.png)

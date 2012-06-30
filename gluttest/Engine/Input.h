@@ -12,6 +12,16 @@ namespace engine{
 		MouseButtonRight = 1
 	};
 	enum KeyCode{
+		KeyCode0 = 0x30,
+		KeyCode1 = 0x31,
+		KeyCode2 = 0x32,
+		KeyCode3 = 0x33,
+		KeyCode4 = 0x34,
+		KeyCode5 = 0x35,
+		KeyCode6 = 0x36,
+		KeyCode7 = 0x37,
+		KeyCode8 = 0x38,
+		KeyCode9 = 0x39,
 		KeyCodeA = 0x41,
 		KeyCodeB = 0x42,
 		KeyCodeC = 0x43,

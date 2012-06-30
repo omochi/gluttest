@@ -2,7 +2,7 @@
 
 namespace omgl{
 	Sphere::Sphere():GLTriangles(){
-		setDivNum(10,10);
+		setDivNum(12,10);
 	}
 	void Sphere::setDivNum(int latN,int lngN){
 		ASSERT(latN>=2);

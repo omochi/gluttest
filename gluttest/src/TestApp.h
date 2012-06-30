@@ -14,6 +14,7 @@ private:
 	omgl::Sphere sph;
 	omgl::Cone cone;
 	omgl::Circle cir;
+	omgl::ArrowXYZ arwXYZ;
 
 
 	omgl::ArrowXYZ uiArw;
@@ -23,10 +24,11 @@ private:
 
 	Test1Shader sh;
 
-	virtual void render();
+	
 
 	bool m_DebugLine;
 	bool m_DebugNormal;
+	bool m_NormalColorView;
 	bool m_Model;
 	bool m_Spin;
 
@@ -36,5 +38,7 @@ protected:
 	virtual void onInitialize();
 	virtual void onFinalize();
 	virtual void onUpdate(float sec);
+	virtual void onRender();
+	virtual void onProfileFps();
 public:
 };

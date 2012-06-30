@@ -33,12 +33,16 @@ void TestApp::onInitialize(){
 	cir.setPos(2,2,0);
 	//scene().addChild(&cir);
 
+	arwXYZ.setPos(2,2,0);
+	scene().addChild(&arwXYZ);
+
 	if(!sh.load()){
 		FAIL("shader load");
 	}
 
 	m_DebugLine = false;
 	m_DebugNormal = false;
+	m_NormalColorView = false;
 	m_Model = true;
 	m_Spin = true;
 
@@ -66,6 +70,7 @@ void TestApp::onUpdate(float sec){
 
 		sph.setRotQuat(glm::rotate(sph.getRotQuat(),180.f*sec,vec3(0,1,0)));
 
+		arwXYZ.setRotQuat(glm::rotate(arwXYZ.getRotQuat(),180.f*sec,vec3(0,1,0)));
 	}
 
 	omgl::Camera *cam = scene().getMainCamera();
@@ -83,6 +88,11 @@ void TestApp::onUpdate(float sec){
 	}
 	if(input().isOnKeyPressed(engine::KeyCodeR)){
 		m_Spin = !m_Spin;
+	}
+	if(input().isOnKeyPressed(engine::KeyCode1)){
+		m_NormalColorView =false;
+	}else if(input().isOnKeyPressed(engine::KeyCode2)){
+		m_NormalColorView = true;
 	}
 
 
@@ -150,7 +160,7 @@ void TestApp::onUpdate(float sec){
 
 }
 
-void TestApp::render(){
+void TestApp::onRender(){
 
 	glViewport(viewport().left(),viewport().top(),
 		viewport().width(),viewport().height());
@@ -163,14 +173,13 @@ void TestApp::render(){
 		cam->m_Width = viewport().width();
 		cam->m_Height = viewport().height();
 		
-
 		sh.m_DebugLineEnabled = m_DebugLine;
 		sh.m_DebugNormalEnabled = m_DebugNormal;
 		sh.m_ModelEnabled = m_Model;
 		sh.m_NormalEnabled = true;
+		sh.m_NormalColorView = m_NormalColorView;
 		sh.renderScene(scene());
 	}
-	
 	
 	glClear(GL_DEPTH_BUFFER_BIT);
 	m_UICamera.m_Width = viewport().width();
@@ -180,8 +189,15 @@ void TestApp::render(){
 	sh.m_DebugNormalEnabled = false;
 	sh.m_ModelEnabled = true;
 	sh.m_NormalEnabled = false;
+	sh.m_NormalColorView = false;
 	sh.renderScene(UIScene());
 
 	glutSwapBuffers();
 	
+}
+
+void TestApp::onProfileFps(){
+	char buf[1000];
+	base::snprintf(buf,sizeof(buf),"FPS:%d",getProfileFps());
+	glutSetWindowTitle(buf);
 }

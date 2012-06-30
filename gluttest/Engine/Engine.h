@@ -23,12 +23,20 @@ namespace engine{
 
 		omgl::Scene m_Scene;
 
+		float m_PrevProfileTime;
+		int m_RenderCount;
+		int m_ProfileFps;
+
+		
+		float getCurrentTime();
+
 
 	protected:
 		omgl::Scene m_UIScene;
 
 		omgl::OrthoCamera m_UICamera;
 	public:
+		int getProfileFps() const;
 		omgl::Scene & scene() ;
 		Input & input();
 
@@ -50,10 +58,12 @@ namespace engine{
 		//所有権を渡す
 		void addActor(Actor *a);
 
-		virtual void render();
+		void render();
 	protected:
 		virtual void onInitialize(){};
 		virtual void onFinalize(){};
 		virtual void onUpdate(float sec){};
+		virtual void onRender(){};
+		virtual void onProfileFps(){};
 	};
 }

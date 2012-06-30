@@ -16,6 +16,7 @@ public:
 		UNI_PROJECTION,
 		UNI_COLOR,
 		UNI_NORMAL_ENABLED,
+		UNI_NORMAL_COLOR_VIEW,
 		UNI_MODEL_NORMAL,
 		UNI_AMBIENT,
 		UNI_DIRECTION,
@@ -38,6 +39,9 @@ public:
 	
 	std::vector<omgl::DebugLines> m_DebugLines;
 
+	omgl::DebugLines m_DebugNormals;
+	omgl::DebugLines m_DebugWires;
+
 	void drawDebugLines(const omgl::DebugLines &line);
 protected:
 	virtual std::string getVshPath(){ return "shader/test1.vsh"; };
@@ -51,6 +55,7 @@ public:
 	bool m_DebugNormalEnabled;
 	bool m_ModelEnabled;
 	bool m_NormalEnabled;
+	bool m_NormalColorView;
 
 	virtual void renderScene(const omgl::Scene &scene);
 

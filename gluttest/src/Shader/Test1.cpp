@@ -7,6 +7,7 @@ Test1Shader::Test1Shader():omgl::GLProgram(),omgl::SceneRenderer(){
 	m_DebugNormalEnabled = false;
 	m_ModelEnabled = true;
 	m_NormalEnabled = true;
+	m_NormalColorView = false;
 };
 
 void Test1Shader::onPreLink(){
@@ -19,6 +20,7 @@ void Test1Shader::onPostLink(){
 	unis[UNI_PROJECTION] = getUniform("uProjection");
 	unis[UNI_COLOR] = getUniform("uColor");
 	unis[UNI_NORMAL_ENABLED] = getUniform("uNormalEnabled");
+	unis[UNI_NORMAL_COLOR_VIEW] = getUniform("uNormalColorView");
 	unis[UNI_MODEL_NORMAL] = getUniform("uModelNormal");
 	unis[UNI_AMBIENT] = getUniform("uAmbient");
 	unis[UNI_DIRECTION] = getUniform("uDirection");
@@ -73,47 +75,57 @@ void Test1Shader::renderNodeImpl(const omgl::GLTriangles &n){
 	if(m_DebugLineEnabled){
 
 		if(n.m_BeginMode==GL_TRIANGLES){
-			omgl::DebugLines line;
-			line.col = omgl::ColorGreen;
-			line.world = model;
+			//omgl::DebugLines line;
+			//line.col = omgl::ColorGreen;
+			//line.world = model;
 			int i=0;
 			for(int i=0;i<static_cast<int>(n.m_Indices.size());i+=3){
 				vec3 p[3];
-				p[0] = n.getVertexByElementIndex(i+0).pos;
-				p[1] = n.getVertexByElementIndex(i+1).pos;
-				p[2] = n.getVertexByElementIndex(i+2).pos;
+				for(int j=0;j<3;j++){
+					p[j] = glm::vec3(glm::mul(model,glm::vec4(n.getVertexByElementIndex(i+j).pos,1.f)));
+				}
+
+
+//				p[0] = n.getVertexByElementIndex(i+0).pos;
+//				p[1] = n.getVertexByElementIndex(i+1).pos;
+//				p[2] = n.getVertexByElementIndex(i+2).pos;
 				
-				line.posList.push_back(p[0]);
-				line.posList.push_back(p[1]);
-				line.posList.push_back(p[1]);
-				line.posList.push_back(p[2]);
-				line.posList.push_back(p[2]);
-				line.posList.push_back(p[0]);
+				m_DebugWires.posList.push_back(p[0]);
+				m_DebugWires.posList.push_back(p[1]);
+				m_DebugWires.posList.push_back(p[1]);
+				m_DebugWires.posList.push_back(p[2]);
+				m_DebugWires.posList.push_back(p[2]);
+				m_DebugWires.posList.push_back(p[0]);
 			}
-			addDebugLines(line);
+			//addDebugLines(line);
 		}
 		
 	}
 	if(m_DebugNormalEnabled){
-		omgl::DebugLines line;
-		line.col = omgl::ColorOrange;
-		line.world = mat(1);
+	//	omgl::DebugLines line;
+	//	line.col = omgl::ColorOrange;
+	//	line.world = mat(1);
 
 		for(int i=0;i<static_cast<int>(n.m_Vertices.size());i++){
 			vec3 p[2];
 			p[0] = glm::vec3(glm::mul(model,glm::vec4(n.m_Vertices[i].pos,1.f)));
-			p[1] = p[0] + glm::mul(modelNormal,n.m_Vertices[i].normal) * 0.1f;
+			p[1] = p[0] + glm::normalize(glm::mul(modelNormal,n.m_Vertices[i].normal)) * 0.1f;
 
-			line.posList.push_back(p[0]);
-			line.posList.push_back(p[1]);
+			m_DebugNormals.posList.push_back(p[0]);
+			m_DebugNormals.posList.push_back(p[1]);
+
+		//	line.posList.push_back(p[0]);
+		//	line.posList.push_back(p[1]);
 		}
 
-		addDebugLines(line);
+	//	addDebugLines(line);
 
 	}
 }
 
 void Test1Shader::drawDebugLines(const omgl::DebugLines &line){
+	if(line.posList.size()==0)return;
+	
 	glUniform1i(unis[UNI_NORMAL_ENABLED],false);
 	glUniform4fv(unis[UNI_COLOR],1,glm::value_ptr(line.col));
 	glUniformMatrix4fv(unis[UNI_MODEL],1,GL_FALSE,glm::value_ptr(line.world));
@@ -138,6 +150,15 @@ void Test1Shader::renderScene(const omgl::Scene &scene){
 
 	m_DebugLines.clear();
 
+	m_DebugWires.col = omgl::ColorGreen;
+	m_DebugWires.world = mat(1);
+	m_DebugWires.posList.clear();
+
+
+	m_DebugNormals.col = omgl::ColorOrange;
+	m_DebugNormals.world = mat(1);
+	m_DebugNormals.posList.clear();
+
 	use();
 
 	Camera *cam = scene.getMainCamera();
@@ -154,8 +175,10 @@ void Test1Shader::renderScene(const omgl::Scene &scene){
 	glUniformMatrix4fv(unis[UNI_VIEWING],1,GL_FALSE,glm::value_ptr(m_Viewing));
 
 	glUniform3fv(unis[UNI_AMBIENT],1,glm::value_ptr(m_Ambient));
-	glUniform3fv(unis[UNI_DIRECTION],1,glm::value_ptr(m_Direction));
+	glUniform3fv(unis[UNI_DIRECTION],1,glm::value_ptr(glm::normalize(m_Direction)));
 	glUniform3fv(unis[UNI_DIRECTION_COLOR],1,glm::value_ptr(m_DirectionColor));
+
+	glUniform1i(unis[UNI_NORMAL_COLOR_VIEW],m_NormalColorView);
 
 	walkNode(scene);
 
@@ -163,6 +186,9 @@ void Test1Shader::renderScene(const omgl::Scene &scene){
 	for(std::vector<omgl::DebugLines>::iterator it = m_DebugLines.begin();it!=m_DebugLines.end();it++){
 		drawDebugLines(*it);
 	}
+
+	drawDebugLines(m_DebugWires);
+	drawDebugLines(m_DebugNormals);
 
 }
 

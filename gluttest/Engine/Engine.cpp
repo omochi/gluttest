@@ -1,10 +1,20 @@
 ﻿#include "Engine.h"
-#include <algorithm>
 #include "Actor.h"
 #include "ActorHandle.h"
 
+#ifdef _WIN32
+#include <MMSystem.h>
+#endif
 
 namespace engine{
+
+	float Engine::getCurrentTime(){
+		return ::timeGetTime() / 1000.f;
+	}
+	int Engine::getProfileFps() const{
+		return m_ProfileFps;
+	}
+
 
 	omgl::Scene  & Engine::scene() {
 		return m_Scene;
@@ -12,19 +22,11 @@ namespace engine{
 	Input & Engine::input(){
 		return m_Input;
 	}
-	/*
-	omgl::SceneRenderer & Engine::renderer(){
-		return m_Renderer;
-	}
-	*/
+
 	omgl::Scene & Engine::UIScene(){
 		return m_UIScene;
 	}
-	/*
-	omgl::SceneRenderer & Engine::UIRenderer(){
-		return m_UIRenderer;
-	}
-	*/
+
 	Rect Engine::viewport() const{
 		return m_Viewport;
 	}
@@ -61,7 +63,11 @@ namespace engine{
 	}
 
 	void Engine::initialize(){
-		//m_Scene.addChild(&m_Camera);
+
+
+		m_ProfileFps = 0;
+		m_PrevProfileTime = getCurrentTime();
+		m_RenderCount = 0;
 
 		m_UICamera.m_Near=-1000.f;
 		m_UICamera.m_Far = 1000.f;
@@ -112,26 +118,15 @@ namespace engine{
 		
 	}
 	void Engine::render(){
-		/*
-		glViewport(m_Viewport.left(),m_Viewport.top(),
-			m_Viewport.width(),m_Viewport.height());
-
-		glClearColor(0.0f,0.0f,0.0f,1.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		omgl::Camera *cam = m_Scene.getMainCamera();
-		if(cam!=NULL){
-			cam->m_Width = m_Viewport.width();
-			cam->m_Height = m_Viewport.height();
-			m_Renderer.renderScene(&m_Scene);
+		float curTime = getCurrentTime();
+		if(curTime < m_PrevProfileTime || curTime > m_PrevProfileTime +1.f){
+			m_PrevProfileTime = curTime;
+			m_ProfileFps = m_RenderCount;
+			m_RenderCount = 0;
+			onProfileFps();
 		}
 
-		glClear(GL_DEPTH_BUFFER_BIT);
-		m_UICamera.m_Width = m_Viewport.width();
-		m_UICamera.m_Height = m_Viewport.height();
-		m_UIRenderer.renderScene(&m_UIScene);
-
-		glutSwapBuffers();
-		*/
+		onRender();
+		m_RenderCount++;
 	}
 }

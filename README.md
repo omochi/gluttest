@@ -5,4 +5,4 @@
 
 # 画像
 
-![デバッグ表示](raw/master/etc/ss/debug-wire-normal.png)
+![デバッグ表示](https://github.com/omochi/gluttest/blob/master/etc/ss/debug-wire-normal.png)
